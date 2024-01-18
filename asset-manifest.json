@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Invella-e-commerce/static/css/main.f855e6bc.css",
+    "main.js": "/Invella-e-commerce/static/js/main.6d8bf457.js",
+    "index.html": "/Invella-e-commerce/index.html",
+    "main.f855e6bc.css.map": "/Invella-e-commerce/static/css/main.f855e6bc.css.map",
+    "main.6d8bf457.js.map": "/Invella-e-commerce/static/js/main.6d8bf457.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.6d8bf457.js"
+  ]
+}
