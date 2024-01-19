@@ -1,3 +1,29 @@
+body {
+  margin: 0;
+}
 
+.Navbar .Navbar-head .logo {
+  height: 70px;
+}
+.Navbar .Navbar-head input {
+  border-color: #dee2e6 !important;
+}
+.Navbar .Navbar-head input:focus {
+  border-color: #dee2e6 !important;
+  box-shadow: 0px 0px 0px !important;
+}
+.Navbar .Navbar-list {
+  background-color: #F58220;
+}
+.Navbar .Navbar-list .list-item:hover ul {
+  display: flex !important;
+}
+.Navbar .Navbar-list li {
+  transition: all 0.4s ease-in-out;
+}
+.Navbar .Navbar-list li:hover {
+  background-color: #F58220;
+  transition: all 0.4s ease-in-out;
+}
 
 /*# sourceMappingURL=style.css.map */

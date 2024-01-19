@@ -1,0 +1,39 @@
+$border-color:#dee2e6;
+$primary-yellow:#F58220;
+$secondary-yellow:#d93;
+body{
+    margin: 0;
+}
+.Navbar{
+    .Navbar-head{
+        .logo{
+            height: 70px;
+        }
+        input{
+            border-color: $border-color !important;
+            &:focus{
+                border-color: $border-color !important;
+                box-shadow: 0px 0px 0px !important ;
+            }
+        }
+
+    }
+    .Navbar-list{
+        background-color: $primary-yellow;
+        .list-item {
+            &:hover{
+                ul{
+                    display: flex !important;
+                }
+            }
+        }
+        li{
+            transition: all 0.4s ease-in-out;
+            &:hover{
+                background-color: $primary-yellow ;
+                transition: all 0.4s ease-in-out;
+
+            }
+        }
+    }
+}
