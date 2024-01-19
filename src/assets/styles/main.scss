@@ -37,3 +37,19 @@ body{
         }
     }
 }
+.Navbar-res{
+    .logo{
+        height: 50px;
+        width: 150px;
+    }
+    input{
+        border-color: $border-color !important;
+        &:focus{
+            border-color: $border-color !important;
+            box-shadow: 0px 0px 0px !important ;
+        }
+    }
+    button{
+        border-color: $primary-yellow !important;
+    }
+}
