@@ -40,5 +40,15 @@ body {
 .Navbar-res button {
   border-color: #F58220 !important;
 }
+.Navbar-res .border {
+  border-color: #F58220 !important;
+}
+.Navbar-res .nav-list-items p {
+  transition: all 0.4s ease-in-out;
+}
+.Navbar-res .nav-list-items p:hover {
+  background-color: #F58220 !important;
+  transition: all 0.4s ease-in-out;
+}
 
 /*# sourceMappingURL=style.css.map */
