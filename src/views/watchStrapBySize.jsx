@@ -4,7 +4,7 @@ const WatchStrapBySize=()=>{
     return(
         <>
             <Navbar/>
-            <h1>Navbar</h1>
+            <h1>watch</h1>
         </>
     );
 }
