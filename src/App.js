@@ -1,12 +1,16 @@
 import './App.css';
-import Navbar from './components/Navbar';
-import HomeBanner from'./components/homeBanner.jsx';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './views/home.jsx';
+import WatchStrapBySize from './views/watchStrapBySize.jsx';
+
 function App() {
   return (
-    <div className="App">
-        <Navbar/>
-        <HomeBanner/>
-    </div>
+    <Router>
+      <Routes>
+      <Route path='/' element={<Home />} />
+        <Route path='/watchStrapBySize' element={<WatchStrapBySize />} /></Routes>
+    </Router>
   );
 }
 
