@@ -81,3 +81,24 @@ body {
     }
 
 }
+.homeBanner{
+    height: 70vh;
+    background-image: url('../images/homeBanner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    .shopNow{
+        background-color: $primary-yellow !important;
+        &:hover{
+            background-color: #000 !important;
+        }
+    }
+}
+.homeBanner-lower{
+    height: 70px;
+    background-color: $primary-yellow !important;
+}
+@media screen and (max-width:550px) and (min-width:100px) {
+    .homeBanner-lower{
+        height: auto !important;
+    }
+}
