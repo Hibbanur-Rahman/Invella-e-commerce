@@ -6,7 +6,7 @@ import WatchStrapBySize from './views/watchStrapBySize.jsx';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Invella-e-commerce">
       <Routes>
       <Route path='/' element={<Home />} />
         <Route path='/watchStrapBySize' element={<WatchStrapBySize />} /></Routes>
