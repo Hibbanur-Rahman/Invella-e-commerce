@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Invella-e-commerce/static/css/main.70d189b9.css",
-    "main.js": "/Invella-e-commerce/static/js/main.f72b2aa0.js",
+    "main.js": "/Invella-e-commerce/static/js/main.309cdcb1.js",
     "static/media/homeBanner.webp": "/Invella-e-commerce/static/media/homeBanner.a60da32a901a9523058a.webp",
     "static/media/logo.png": "/Invella-e-commerce/static/media/logo.261bc740d31ddb3df0b1.png",
     "static/media/item-image.webp": "/Invella-e-commerce/static/media/item-image.eca15961bfb3b81128d8.webp",
     "index.html": "/Invella-e-commerce/index.html",
     "static/media/turnLeftIcon.svg": "/Invella-e-commerce/static/media/turnLeftIcon.c588888c0894fcada0b544125c33f00c.svg",
     "main.70d189b9.css.map": "/Invella-e-commerce/static/css/main.70d189b9.css.map",
-    "main.f72b2aa0.js.map": "/Invella-e-commerce/static/js/main.f72b2aa0.js.map"
+    "main.309cdcb1.js.map": "/Invella-e-commerce/static/js/main.309cdcb1.js.map"
   },
   "entrypoints": [
     "static/css/main.70d189b9.css",
-    "static/js/main.f72b2aa0.js"
+    "static/js/main.309cdcb1.js"
   ]
 }
