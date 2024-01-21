@@ -1,29 +1,42 @@
 import itemImage from "../assets/images/item-image.webp";
+import itemImage1 from "../assets/images/item-image-1.webp";
 const Items = () => {
   return (
-    <div className="col-4 item">
-      <div className="item-img">
-        <div className="item-discount m-0 p-0 w-auto">
-          <p className="m-0 p-0">-45%</p>
+    <div className="col-3 item">
+      <a href="/Invella-e-commerce/watchStrapBySize" className="text-decoration-none text-black">
+        <div className="item-img position-relative ">
+          <div className="item-discount m-0 p-0 w-auto position-absolute rounded-1">
+            <p className="m-0 p-2 pt-0 pb-0" style={{ fontSize: "14px" }}>
+              -45%
+            </p>
+          </div>
+          <img className="image-fluid" src={itemImage1} alt="item" />
         </div>
-        <img className="image-fluid" src={itemImage} alt="Item Image" />
-      </div>
-      <div className="item-desc row m-0 p-0">
-        <p className="m-0 p-0">
-          invella 22mm Jubilee Style Curved Bracelet Watch Strap
-        </p>
-        <div className="rating row m-0 p-0 ">
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className='fa-solid fa-star'></i>
+        <div className="item-desc row m-0 p-0 pt-2">
+          <p className="m-0 p-0 text-secondary ">
+            invella 22mm Jubilee Style Curved Bracelet Watch Strap
+          </p>
+          <div className="rating row m-0 p-0 pt-2">
+            <i className="fa-solid fa-star w-auto m-0 p-0"></i>
+            <i className="fa-solid fa-star w-auto m-0 p-0"></i>
+            <i className="fa-solid fa-star w-auto m-0 p-0"></i>
+            <i className="fa-solid fa-star w-auto m-0 p-0"></i>
+            <i className="fa-solid fa-star w-auto m-0 p-0"></i>
+          </div>
+          <div className="price row m-0 p-0 align-items-center pt-2">
+            <p className="text-decoration-line-through text-secondary w-auto m-0 p-0">
+              <span>₹</span>3,999.00
+            </p>
+            <p className="fs-6 w-auto m-0 p-0 ps-2">
+              <span>₹</span>2,199.00
+            </p>
+          </div>
         </div>
-        <div className="price row m-0 p-0">
-            <p className="text-decoration-line-through text-secondary w-auto m-0 p-0"><span>₹</span>3,999.00</p>
-            <p className="fs-5"><span>₹</span>2,199.00</p>
+
+        <div className="row m-0 p-0 pt-4">
+          <button className="btn btn-lg addCart text-light">Add to cart</button>
         </div>
-      </div>
+      </a>
     </div>
   );
 };

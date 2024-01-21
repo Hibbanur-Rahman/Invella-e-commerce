@@ -46,6 +46,9 @@ body {
   transition: all 0.4s ease-in-out;
 }
 
+.Navbar-res {
+  z-index: 2;
+}
 .Navbar-res .logo {
   height: 50px;
   width: 150px;
@@ -87,6 +90,56 @@ body {
 .homeBanner-lower {
   height: 70px;
   background-color: #F58220 !important;
+}
+
+.item {
+  height: 80vh;
+  z-index: 1 !important;
+}
+.item .item-img {
+  height: 62% !important;
+  overflow: hidden;
+}
+.item .item-img .item-discount {
+  top: 20px;
+  left: 20px;
+  background-color: #F58220 !important;
+  z-index: 1;
+}
+.item .item-img img {
+  height: 100% !important;
+  width: 100% !important;
+  scale: 1;
+  transition: all 0.4s ease-in-out;
+}
+.item:hover img {
+  scale: 1.1;
+  transition: all 0.4s ease-in-out;
+}
+.item:hover .addCart {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.4s ease-in-out;
+}
+.item i {
+  color: #F58220;
+}
+.item .price p:nth-child(1) {
+  font-size: 15px;
+}
+.item .price p:nth-child(2) {
+  color: #F58220;
+  font-size: 16px !important;
+}
+.item .addCart {
+  background-color: #F58220 !important;
+  display: none !important;
+  transition: all 0.4s ease-in-out;
+}
+.item .addCart:hover {
+  background-color: #000 !important;
+  transition: all 0.4s ease-in-out;
 }
 
 @media screen and (max-width: 550px) and (min-width: 100px) {

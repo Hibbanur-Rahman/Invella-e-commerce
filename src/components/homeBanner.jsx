@@ -1,5 +1,4 @@
 import "../assets/styles/style.css";
-import turnLeftIcon from "../assets/images/turnLeftIcon.svg";
 const HomeBanner = () => {
   return (
     <>

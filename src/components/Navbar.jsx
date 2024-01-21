@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="Navbar d-none d-md-flex flex-column m-0 p-0">
         <div className="Navbar-head row m-0 p-0 pt-3 pb-3 d-flex align-items-center justify-content-center ">
           <div className="col-2 ps-2">
-            <a href="/">
+            <a href="/Invella-e-commerce/">
               <img className="logo" src={logo} alt="logo" />
             </a>
           </div>
@@ -294,7 +294,7 @@ const Navbar = () => {
         </div>
         <div
           className="offcanvas offcanvas-end bg-black"
-          tabindex="-1"
+          tabindex="2"
           id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel"
         >
