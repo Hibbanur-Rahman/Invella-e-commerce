@@ -119,11 +119,11 @@ body {
 .item .item-img img {
   height: 100% !important;
   width: 100% !important;
-  scale: 1;
+  scale: 1.05;
   transition: all 0.4s ease-in-out;
 }
 .item:hover img {
-  scale: 1.1;
+  scale: 1;
   transition: all 0.4s ease-in-out;
 }
 .item:hover .addCart {
@@ -150,6 +150,36 @@ body {
 .item .addCart:hover {
   background-color: #000 !important;
   transition: all 0.4s ease-in-out;
+}
+
+.bands-item img {
+  height: 120px !important;
+  width: 240px !important;
+  scale: 1;
+  transition: all 0.4s ease-in-out;
+}
+.bands-item:hover img {
+  scale: 1.1;
+  transition: all 0.4s ease-in-out;
+}
+
+button {
+  background-color: #F58220 !important;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #000 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.Watch-quote {
+  height: 80vh;
+  background-image: url("../images/background-image.webp");
+  background-size: cover;
+  background-attachment: fixed;
+}
+.Watch-quote .inner-elements {
+  background-color: rgba(0, 0, 0, 0.4941176471);
 }
 
 @media screen and (max-width: 550px) and (min-width: 100px) {

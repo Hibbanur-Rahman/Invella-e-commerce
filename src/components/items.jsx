@@ -1,5 +1,4 @@
-import itemImage from "../assets/images/item-image.webp";
-import itemImage1 from "../assets/images/item-image-1.webp";
+
 const Items = (props) => {
   return (
     <div className="col-12 col-sm-6 col-md-3 item">
@@ -10,7 +9,8 @@ const Items = (props) => {
               {props.discountPercent}
             </p>
           </div>
-          <img className="image-fluid" src={itemImage1} alt="item" />
+          <img className="image-fluid" src={props.image} alt="item" />
+          
         </div>
         <div className="item-desc row m-0 p-0 pt-2">
           <p className="m-0 p-0 text-secondary ">

@@ -29,13 +29,14 @@ body {
         .list-item {
             &:hover {
                 z-index: 3 !important;
+
                 ul {
                     display: flex !important;
-                    
+
                 }
             }
         }
-        
+
         li {
             transition: all 0.4s ease-in-out;
 
@@ -46,7 +47,9 @@ body {
             }
         }
     }
+
     transition: all 0.4s ease-in-out;
+
     .fixed {
         position: fixed;
         top: 0;
@@ -55,8 +58,9 @@ body {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease-in-out;
         z-index: 2 !important;
-      }
+    }
 }
+
 .fixed {
     position: fixed;
     top: 0;
@@ -65,9 +69,11 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease-in-out;
     z-index: 2 !important;
-  }
+}
+
 .Navbar-res {
     z-index: 2;
+
     .logo {
         height: 50px;
         width: 150px;
@@ -102,87 +108,140 @@ body {
     }
 
 }
-.homeBanner{
+
+.homeBanner {
     height: 70vh;
     background-image: url('../images/homeBanner.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    .shopNow{
+
+    .shopNow {
         background-color: $primary-yellow !important;
-        &:hover{
+
+        &:hover {
             background-color: #000 !important;
         }
     }
 }
-.homeBanner-lower{
+
+.homeBanner-lower {
     height: 70px;
     background-color: $primary-yellow !important;
 }
 
 
-.line{
+.line {
     height: 3px !important;
     background-color: #000 !important;
 }
-.item{
+
+.item {
     height: 80vh;
     z-index: 1 !important;
-    .item-img{
+
+    .item-img {
         height: 62% !important;
         overflow: hidden;
-        .item-discount{
+
+        .item-discount {
             top: 20px;
             left: 20px;
             background-color: $primary-yellow !important;
             z-index: 1;
         }
-        img{
+
+        img {
             height: 100% !important;
             width: 100% !important;
-            scale: 1;
+            scale: 1.05;
             transition: all 0.4s ease-in-out;
             // z-index:  !important;
         }
-        
+
     }
-    &:hover{
-        img{
-            scale: 1.1;
+
+    &:hover {
+        img {
+            scale: 1;
             transition: all 0.4s ease-in-out;
         }
-        .addCart{
+
+        .addCart {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             transition: all 0.4s ease-in-out;
         }
     }
-    i{
+
+    i {
         color: $primary-yellow;
     }
-    .price{
-        p:nth-child(1){
+
+    .price {
+        p:nth-child(1) {
             font-size: 15px;
         }
-        p:nth-child(2){
+
+        p:nth-child(2) {
             color: $primary-yellow;
             font-size: 16px !important;
         }
     }
-    .addCart{
+
+    .addCart {
         background-color: $primary-yellow !important;
         display: none !important;
         transition: all 0.4s ease-in-out;
-        &:hover{
+
+        &:hover {
             background-color: #000 !important;
             transition: all 0.4s ease-in-out;
         }
     }
 }
 
+.bands-item {
+    img {
+        height: 120px !important;
+        width: 240px !important;
+        scale: 1;
+        transition: all 0.4s ease-in-out;
+
+    }
+
+    &:hover {
+        img {
+            scale: 1.1;
+            transition: all 0.4s ease-in-out;
+        }
+    }
+}
+
+button {
+    background-color: $primary-yellow !important;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #000 !important;
+        transition: all 0.3s ease-in-out;
+
+    }
+}
+
+.Watch-quote{
+    height: 80vh;
+    background-image: url('../images/background-image.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    .inner-elements{
+        background-color: #0000007e;
+        
+    }
+}
 
 @media screen and (max-width:550px) and (min-width:100px) {
-    .homeBanner-lower{
+    .homeBanner-lower {
         height: auto !important;
     }
 }
