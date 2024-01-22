@@ -182,6 +182,17 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.4941176471);
 }
 
+.News-Item img {
+  height: 200px;
+}
+.News-Item .date {
+  font-size: 14px;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.8509803922) !important;
+}
+
 @media screen and (max-width: 550px) and (min-width: 100px) {
   .homeBanner-lower {
     height: auto !important;

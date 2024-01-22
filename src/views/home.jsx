@@ -2,6 +2,9 @@ import Navbar from "../components/Navbar";
 import HomeBanner from "../components/homeBanner";
 import Items from "../components/items";
 import ItemBands from "../components/itemBands";
+import NewsItem from "../components/news_Item";
+import Footer from "../components/footer";
+
 const Home = () => {
   return (
     <div className="row m-0 p-0 d-flex align-items-center justify-content-center flex-column ">
@@ -141,9 +144,8 @@ const Home = () => {
         </div>
       </div>
 
-
-       {/* =============== SmartWatch Case Cover ============= */}
-       <div className="case-cover container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      {/* =============== SmartWatch Case Cover ============= */}
+      <div className="case-cover container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">SMARTWATCH CASE COVER</h3>
@@ -177,8 +179,8 @@ const Home = () => {
         </div>
       </div>
 
-       {/* =============== SmartWatch Charger ============= */}
-       <div className="case-cover container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      {/* =============== SmartWatch Charger ============= */}
+      <div className="watch-charger container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">SMARTWATCH CHARGER</h3>
@@ -187,7 +189,9 @@ const Home = () => {
         <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
           <Items
             price={499}
-            description={"Amazfit PACE Smartwatch Charger-Micro USB Cable and Dock"}
+            description={
+              "Amazfit PACE Smartwatch Charger-Micro USB Cable and Dock"
+            }
             discountPercent={"-50%"}
             image={require("../assets/images/charger-1.webp")}
           />
@@ -199,7 +203,9 @@ const Home = () => {
           />
           <Items
             price={349}
-            description={"Fitbit Charger 2/ Charger 2 HR Charger- Charging Dock Cable"}
+            description={
+              "Fitbit Charger 2/ Charger 2 HR Charger- Charging Dock Cable"
+            }
             discountPercent={"-65%"}
             image={require("../assets/images/charger-3.webp")}
           />
@@ -212,8 +218,52 @@ const Home = () => {
         </div>
       </div>
 
-       {/* =============== LATEST NEWS ============= */}
-       </div>
+      {/* =============== LATEST NEWS ============= */}
+      <div className="watch-charger container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+        <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
+          <div className="col-3 line"></div>
+          <h3 className="m-0 p-0 w-auto ps-3 pe-3">LATEST NEWS</h3>
+          <div className="col-3 line"></div>
+        </div>
+        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+          <NewsItem
+            image={require("../assets/images/news-1.webp")}
+            heading="THE BOLD AND TIMELESS LUMINOX MEN’S 3051 EVO NAVY SEAL COLORMARK WATCH"
+            date="June 29, 2023"
+            NoComments="No"
+            description="Luminox Men’s 3051 EVO Navy SEAL Colormark Watch | Watches have always been more than just timekeeping devices; they express personal style, a statement of"
+          />
+          <NewsItem
+            image={require("../assets/images/news-1.webp")}
+            heading="THE BOLD AND TIMELESS LUMINOX MEN’S 3051 EVO NAVY SEAL COLORMARK WATCH"
+            date="June 29, 2023"
+            NoComments="No"
+            description="Luminox Men’s 3051 EVO Navy SEAL Colormark Watch | Watches have always been more than just timekeeping devices; they express personal style, a statement of"
+          />
+          <NewsItem
+            image={require("../assets/images/news-1.webp")}
+            heading="THE BOLD AND TIMELESS LUMINOX MEN’S 3051 EVO NAVY SEAL COLORMARK WATCH"
+            date="June 29, 2023"
+            NoComments="No"
+            description="Luminox Men’s 3051 EVO Navy SEAL Colormark Watch | Watches have always been more than just timekeeping devices; they express personal style, a statement of"
+          />
+          <NewsItem
+            image={require("../assets/images/news-1.webp")}
+            heading="THE BOLD AND TIMELESS LUMINOX MEN’S 3051 EVO NAVY SEAL COLORMARK WATCH"
+            date="June 29, 2023"
+            NoComments="No"
+            description="Luminox Men’s 3051 EVO Navy SEAL Colormark Watch | Watches have always been more than just timekeeping devices; they express personal style, a statement of"
+          />
+        </div>
+
+        <button className="btn btn-lg fs-5 text-white ps-5 pe-5 pt-1 pb-1 mt-5 mb-5">
+          Load More
+        </button>
+      </div>
+
+      {/* =============== Footer ============= */}
+      <Footer />
+    </div>
   );
 };
 
