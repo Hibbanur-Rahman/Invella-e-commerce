@@ -1,17 +1,41 @@
 {
   "files": {
-    "main.css": "/Invella-e-commerce/static/css/main.124249a4.css",
-    "main.js": "/Invella-e-commerce/static/js/main.879ea10f.js",
+    "main.css": "/Invella-e-commerce/static/css/main.6fbfbdef.css",
+    "main.js": "/Invella-e-commerce/static/js/main.01f47617.js",
+    "static/media/background-image.webp": "/Invella-e-commerce/static/media/background-image.b865fd29564a4f824d69.webp",
+    "static/media/news-1.webp": "/Invella-e-commerce/static/media/news-1.30b066461f8a2c6c8ad0.webp",
     "static/media/homeBanner.webp": "/Invella-e-commerce/static/media/homeBanner.a60da32a901a9523058a.webp",
     "static/media/logo.png": "/Invella-e-commerce/static/media/logo.261bc740d31ddb3df0b1.png",
-    "static/media/item-image.webp": "/Invella-e-commerce/static/media/item-image.eca15961bfb3b81128d8.webp",
+    "static/media/brands-1.webp": "/Invella-e-commerce/static/media/brands-1.6b7dd8638a6f5f575ff5.webp",
+    "static/media/brands-8.webp": "/Invella-e-commerce/static/media/brands-8.750960980b62bb54df20.webp",
+    "static/media/brands-3.webp": "/Invella-e-commerce/static/media/brands-3.6dcae86ceab88da7ff46.webp",
+    "static/media/item-image-3.webp": "/Invella-e-commerce/static/media/item-image-3.b25edabfa370e0a5d645.webp",
+    "static/media/brands-6.webp": "/Invella-e-commerce/static/media/brands-6.5f1a2322ddba042ac810.webp",
+    "static/media/brands-2.webp": "/Invella-e-commerce/static/media/brands-2.b56abc0628c1617a2001.webp",
+    "static/media/brands-7.webp": "/Invella-e-commerce/static/media/brands-7.94b38fe4dfbd7c5e3f43.webp",
+    "static/media/brands-5.webp": "/Invella-e-commerce/static/media/brands-5.e08e68c0b37dae09e5e1.webp",
+    "static/media/item-image-2.webp": "/Invella-e-commerce/static/media/item-image-2.37d82fb504353351dde2.webp",
+    "static/media/brands-4.webp": "/Invella-e-commerce/static/media/brands-4.5dd0eb3793f32fd17996.webp",
+    "static/media/item-image-4.webp": "/Invella-e-commerce/static/media/item-image-4.eca15961bfb3b81128d8.webp",
     "static/media/item-image-1.webp": "/Invella-e-commerce/static/media/item-image-1.55fb69f294dc8e3aed9f.webp",
+    "static/media/best-seller-4.webp": "/Invella-e-commerce/static/media/best-seller-4.44d9108d572cfe7b04fd.webp",
+    "static/media/smart-watch-case-3.webp": "/Invella-e-commerce/static/media/smart-watch-case-3.fefd7a95f00739188d84.webp",
+    "static/media/charger-4.webp": "/Invella-e-commerce/static/media/charger-4.1d7817b7c5ddc0a88cc4.webp",
+    "static/media/smart-watch-case-4.webp": "/Invella-e-commerce/static/media/smart-watch-case-4.de0fe0958d7ebec64bdd.webp",
+    "static/media/smart-watch-case-1.webp": "/Invella-e-commerce/static/media/smart-watch-case-1.ee991ed704ce1822a865.webp",
+    "static/media/best-seller-1.webp": "/Invella-e-commerce/static/media/best-seller-1.1d70cb2834a2230dd5ee.webp",
+    "static/media/best-seller-3.webp": "/Invella-e-commerce/static/media/best-seller-3.306af5affcd359927dcb.webp",
+    "static/media/charger-3.webp": "/Invella-e-commerce/static/media/charger-3.eb11d209141a370f23aa.webp",
+    "static/media/charger-1.webp": "/Invella-e-commerce/static/media/charger-1.cc3a3f07e1094d1d64c1.webp",
+    "static/media/best-seller-2.webp": "/Invella-e-commerce/static/media/best-seller-2.baacfb0405b42c4eb5a1.webp",
+    "static/media/smart-watch-case-2.webp": "/Invella-e-commerce/static/media/smart-watch-case-2.c05f635b49d384164a8c.webp",
+    "static/media/charger-2.webp": "/Invella-e-commerce/static/media/charger-2.0eef7cbd8cd53de59ce1.webp",
     "index.html": "/Invella-e-commerce/index.html",
-    "main.124249a4.css.map": "/Invella-e-commerce/static/css/main.124249a4.css.map",
-    "main.879ea10f.js.map": "/Invella-e-commerce/static/js/main.879ea10f.js.map"
+    "main.6fbfbdef.css.map": "/Invella-e-commerce/static/css/main.6fbfbdef.css.map",
+    "main.01f47617.js.map": "/Invella-e-commerce/static/js/main.01f47617.js.map"
   },
   "entrypoints": [
-    "static/css/main.124249a4.css",
-    "static/js/main.879ea10f.js"
+    "static/css/main.6fbfbdef.css",
+    "static/js/main.01f47617.js"
   ]
 }
