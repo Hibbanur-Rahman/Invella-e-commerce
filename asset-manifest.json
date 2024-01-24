@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/Invella-e-commerce/static/css/main.6fbfbdef.css",
-    "main.js": "/Invella-e-commerce/static/js/main.01f47617.js",
+    "main.css": "/Invella-e-commerce/static/css/main.a4345314.css",
+    "main.js": "/Invella-e-commerce/static/js/main.5e817497.js",
+    "static/media/watch-banner-2.webp": "/Invella-e-commerce/static/media/watch-banner-2.23efda3dd3fa7f26c84e.webp",
     "static/media/background-image.webp": "/Invella-e-commerce/static/media/background-image.b865fd29564a4f824d69.webp",
     "static/media/news-1.webp": "/Invella-e-commerce/static/media/news-1.30b066461f8a2c6c8ad0.webp",
     "static/media/homeBanner.webp": "/Invella-e-commerce/static/media/homeBanner.a60da32a901a9523058a.webp",
@@ -20,6 +21,7 @@
     "static/media/item-image-1.webp": "/Invella-e-commerce/static/media/item-image-1.55fb69f294dc8e3aed9f.webp",
     "static/media/best-seller-4.webp": "/Invella-e-commerce/static/media/best-seller-4.44d9108d572cfe7b04fd.webp",
     "static/media/smart-watch-case-3.webp": "/Invella-e-commerce/static/media/smart-watch-case-3.fefd7a95f00739188d84.webp",
+    "static/media/payment-footer.webp": "/Invella-e-commerce/static/media/payment-footer.e1ff088cba49f476a765.webp",
     "static/media/charger-4.webp": "/Invella-e-commerce/static/media/charger-4.1d7817b7c5ddc0a88cc4.webp",
     "static/media/smart-watch-case-4.webp": "/Invella-e-commerce/static/media/smart-watch-case-4.de0fe0958d7ebec64bdd.webp",
     "static/media/smart-watch-case-1.webp": "/Invella-e-commerce/static/media/smart-watch-case-1.ee991ed704ce1822a865.webp",
@@ -31,11 +33,11 @@
     "static/media/smart-watch-case-2.webp": "/Invella-e-commerce/static/media/smart-watch-case-2.c05f635b49d384164a8c.webp",
     "static/media/charger-2.webp": "/Invella-e-commerce/static/media/charger-2.0eef7cbd8cd53de59ce1.webp",
     "index.html": "/Invella-e-commerce/index.html",
-    "main.6fbfbdef.css.map": "/Invella-e-commerce/static/css/main.6fbfbdef.css.map",
-    "main.01f47617.js.map": "/Invella-e-commerce/static/js/main.01f47617.js.map"
+    "main.a4345314.css.map": "/Invella-e-commerce/static/css/main.a4345314.css.map",
+    "main.5e817497.js.map": "/Invella-e-commerce/static/js/main.5e817497.js.map"
   },
   "entrypoints": [
-    "static/css/main.6fbfbdef.css",
-    "static/js/main.01f47617.js"
+    "static/css/main.a4345314.css",
+    "static/js/main.5e817497.js"
   ]
 }
