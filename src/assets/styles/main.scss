@@ -124,6 +124,18 @@ body {
     }
 }
 
+.banner {
+    height: 45vh !important;
+    background-image: url('../images/watch-banner-2.webp');
+    background-size: cover;
+    background-position: center center;
+
+    .inner-elements {
+        background-color: #0000007e;
+
+    }
+}
+
 .homeBanner-lower {
     height: 70px;
     background-color: $primary-yellow !important;
@@ -229,29 +241,55 @@ button {
     }
 }
 
-.Watch-quote{
+.Watch-quote {
     height: 80vh;
     background-image: url('../images/background-image.webp');
     background-size: cover;
     background-attachment: fixed;
-    .inner-elements{
+
+    .inner-elements {
         background-color: #0000007e;
-        
+
     }
 }
 
 .News-Item {
-    img{
+    img {
         height: 200px;
     }
-    .date{
+
+    .date {
         font-size: 14px;
     }
 }
 
 
-.footer{
+.footer {
     background-color: #000000D9 !important;
+
+    .section-heading {
+        border-bottom: 4px solid white;
+
+    }
+
+    p {
+        text-align: justify !important;
+    }
+
+    a:hover {
+        i {
+            color: $primary-yellow !important;
+        }
+
+        p {
+            color: $primary-yellow !important;
+        }
+    }
+
+    img {
+        width: 300px !important;
+        height: 120px !important;
+    }
 }
 
 

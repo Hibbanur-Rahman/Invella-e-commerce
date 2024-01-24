@@ -123,6 +123,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* =============== Watch-quote ============= */}
       <div className="Watch-quote row m-0 p-0 align-items-center justify-content-center">
         <div className="inner-elements row m-0 p-0 align-items-center justify-content-center h-100 ">
           <div className=" col-8 d-flex flex-column align-items-center  ">

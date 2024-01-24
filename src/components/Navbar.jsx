@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/images/logo.png";
 import "../assets/styles/style.css";
 
 const Navbar = () => {
   const [isFixed, setIsFixed] = useState(false);
-  useEffect(()=>{
-    const handleScroll=()=>{
-      const scrollPosition= window.scrollY;
-      const offset=100;
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const offset = 100;
 
       setIsFixed(scrollPosition > offset);
     };
 
-    window.addEventListener('scroll',handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return ()=>{
-      window.removeEventListener('scroll',handleScroll);
-    }
-  },[])
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
       <div className="Navbar d-none d-md-flex flex-column m-0 p-0">
         <div className="Navbar-head row m-0 p-0 pt-3 pb-3 d-flex align-items-center justify-content-center ">
           <div className="col-2 ps-2">
-            <a href="/Invella-e-commerce/">
+            <Link to="/">
               <img className="logo" src={logo} alt="logo" />
-            </a>
+            </Link>
           </div>
           <div className="col-4 m-0 p-0">
             <div className="input-group m-0 p-0">
@@ -43,18 +43,20 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-2 d-flex align-items-center m-0 p-0 ps-4">
-            <a className="text-black m-0 p-0 ms-3 me-2" href="#">
+            <Link className="text-black m-0 p-0 ms-3 me-2" to="#">
               <i className="bi bi-person-circle fs-2"></i>
-            </a>
-            <a className="text-black m-0 p-0  ms-2 me-2" href="#">
+            </Link>
+            <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
               <i className="bi bi-heart fs-2"></i>
-            </a>
-            <a className="text-black m-0 p-0  ms-2 me-2" href="#">
+            </Link>
+            <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
               <i className="bi bi-cart3 fs-2"></i>
-            </a>
+            </Link>
           </div>
         </div>
-        <div className={`Navbar-list row m-0 p-0 d-flex align-items-center justify-content-center ${isFixed?'fixed':''} `}>
+        <div
+          className={`Navbar-list row m-0 p-0 d-flex align-items-center justify-content-center ${isFixed ? "fixed" : ""} `}
+        >
           <div className="col-11 m-0 p-0 d-flex align-items-center justify-content-center ">
             <div className="list-item col-2 position-relative p-3">
               <p className="m-0 p-0 w-auto text-light fw-semibold ">
@@ -64,33 +66,33 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-10 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a
-                  href="/watchStrapBySize"
+                <Link
+                  to="/watchStrapBySize"
                   className="text-decoration-none text-light"
                 >
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">14mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">16mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">18mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">20mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">21mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">22mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">24mm Watch Strap</li>
-                </a>
+                </Link>
               </ul>
             </div>
             <div className="list-item col-2 position-relative p-3">
@@ -101,26 +103,26 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-12 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a href="#" className="text-decoration-none text-light ">
+                <Link to="#" className="text-decoration-none text-light ">
                   <li className="p-3 ps-2 pe-2 text-start">
                     Milanese Metal Watch Straps
                   </li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 ps-2 pe-2  text-start">
                     Genuine Leather Watch Straps
                   </li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 ps-2 pe-2  text-start">
                     Nylon Watch Straps
                   </li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 ps-2 pe-2  text-start">
                     Silicon Watch Straps
                   </li>
-                </a>
+                </Link>
               </ul>
             </div>
             <div className="list-item col-2 position-relative p-3">
@@ -131,30 +133,30 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-12 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a href="#" className="text-decoration-none text-light">
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Amazfit Smartwatch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Apple Watch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Boat Smartwatch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Crossbeats watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Fire-Bolt Watch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">GC watch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Fitbit Smartwatch Straps</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3 text-start">Fossil Watch Straps</li>
-                </a>
+                </Link>
               </ul>
             </div>
 
@@ -166,30 +168,30 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-10 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a href="#" className="text-decoration-none text-light">
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
+                </Link>
               </ul>
             </div>
             <div className="list-item col-2 position-relative p-3">
@@ -200,30 +202,30 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-10 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a href="#" className="text-decoration-none text-light">
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
+                </Link>
               </ul>
             </div>
             <div className="list-item col-2 position-relative p-3">
@@ -234,30 +236,30 @@ const Navbar = () => {
                 </span>
               </p>
               <ul className="col-10 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
-                <a href="#" className="text-decoration-none text-light">
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
-                <a href="#" className="text-decoration-none text-light">
+                </Link>
+                <Link to="#" className="text-decoration-none text-light">
                   <li className="p-3">12mm Watch Strap</li>
-                </a>
+                </Link>
               </ul>
             </div>
           </div>
@@ -325,283 +327,283 @@ const Navbar = () => {
             </div>
             <div className="nav-list-items row m-0 p-0 mt-5 pt-3">
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#strapBySize"
+                  to="#strapBySize"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Watch Strap By Size
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="strapBySize">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       14mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       16mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       18mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       19mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       20mm Watch Strap
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#strapByMaterial"
+                  to="#strapByMaterial"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Watch Strap By Material
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="strapByMaterial">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Milanesa Metal Watch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Genuine Leather Watch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Nylon Watch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Silicon Watch Straps
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#strapByBrand"
+                  to="#strapByBrand"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Watch Strap By Brand
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="strapByBrand">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Amazfit Smartwatch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Apple Watch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Boat Smartwatch Straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Crossbeats watch strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Fitbit Smartwatch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Fire-Bolt watch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       GC watch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Fossil watch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Garmin watch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       G-Shock watch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Gionee Smartwatch straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Honor Watch/Band straps
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       Realme watch straps
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#screenProtector"
+                  to="#screenProtector"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Screen Protectors
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="screenProtector">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#screenCase"
+                  to="#screenCase"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Smart Case Cover
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="screenCase">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-12   ">
-                <a
+                <Link
                   class="text-decoration-none text-light"
                   data-bs-toggle="collapse"
-                  href="#smartCharger"
+                  to="#smartCharger"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
                   <p className="m-0 p-0 pb-2 pt-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                     Smartwatch Charger
                   </p>
-                </a>
+                </Link>
                 <div class="collapse" id="smartCharger">
-                  <a class="text-decoration-none text-light" href="#">
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
-                  <a class="text-decoration-none text-light" href="#">
+                  </Link>
+                  <Link class="text-decoration-none text-light" to="#">
                     <p className="m-0 p-0 pb-2 pt-2 ps-2 border border-2 border-top-0 border-start-0 border-end-0 text-start fs-4">
                       12mm Watch Strap
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

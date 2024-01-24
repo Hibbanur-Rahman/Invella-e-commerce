@@ -4,7 +4,9 @@ const HomeBanner = () => {
     <>
       <div className="homeBanner row m-0 p-0 d-flex align-items-center justify-content-center ">
         <div class="col-12 d-flex flex-column align-items-center justify-content-center">
-          <h1 class="text-light text-center">THE BEST SELECTION OF WATCHES BANDS</h1>
+          <h1 class="text-light text-center">
+            THE BEST SELECTION OF WATCHES BANDS
+          </h1>
           <button class="shopNow btn btn-lg text-light w-auto">Shop Now</button>
         </div>
       </div>

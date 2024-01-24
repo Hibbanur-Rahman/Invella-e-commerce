@@ -92,6 +92,16 @@ body {
   background-color: #000 !important;
 }
 
+.banner {
+  height: 45vh !important;
+  background-image: url("../images/watch-banner-2.webp");
+  background-size: cover;
+  background-position: center center;
+}
+.banner .inner-elements {
+  background-color: rgba(0, 0, 0, 0.4941176471);
+}
+
 .homeBanner-lower {
   height: 70px;
   background-color: #F58220 !important;
@@ -191,6 +201,22 @@ button:hover {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.8509803922) !important;
+}
+.footer .section-heading {
+  border-bottom: 4px solid white;
+}
+.footer p {
+  text-align: justify !important;
+}
+.footer a:hover i {
+  color: #F58220 !important;
+}
+.footer a:hover p {
+  color: #F58220 !important;
+}
+.footer img {
+  width: 300px !important;
+  height: 120px !important;
 }
 
 @media screen and (max-width: 550px) and (min-width: 100px) {

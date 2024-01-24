@@ -1,13 +1,14 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-const WatchStrapBySize = () => {
+import Banner from "../components/banner";
+const Login = () => {
   return (
     <>
       <Navbar />
-      <h1>watch</h1>
+        <Banner head="MY ACCOUNT" path="Home / My account"/>
       <Footer />
     </>
   );
 };
 
-export default WatchStrapBySize;
+export default Login;
