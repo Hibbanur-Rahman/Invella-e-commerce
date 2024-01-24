@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Invella-e-commerce/static/css/main.a4345314.css",
-    "main.js": "/Invella-e-commerce/static/js/main.5e817497.js",
+    "main.js": "/Invella-e-commerce/static/js/main.c6221902.js",
     "static/media/watch-banner-2.webp": "/Invella-e-commerce/static/media/watch-banner-2.23efda3dd3fa7f26c84e.webp",
     "static/media/background-image.webp": "/Invella-e-commerce/static/media/background-image.b865fd29564a4f824d69.webp",
     "static/media/news-1.webp": "/Invella-e-commerce/static/media/news-1.30b066461f8a2c6c8ad0.webp",
@@ -34,10 +34,10 @@
     "static/media/charger-2.webp": "/Invella-e-commerce/static/media/charger-2.0eef7cbd8cd53de59ce1.webp",
     "index.html": "/Invella-e-commerce/index.html",
     "main.a4345314.css.map": "/Invella-e-commerce/static/css/main.a4345314.css.map",
-    "main.5e817497.js.map": "/Invella-e-commerce/static/js/main.5e817497.js.map"
+    "main.c6221902.js.map": "/Invella-e-commerce/static/js/main.c6221902.js.map"
   },
   "entrypoints": [
     "static/css/main.a4345314.css",
-    "static/js/main.5e817497.js"
+    "static/js/main.c6221902.js"
   ]
 }
