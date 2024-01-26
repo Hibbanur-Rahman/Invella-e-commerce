@@ -1,0 +1,9 @@
+.login{
+     input{
+        &:focus{
+            outline: none !important;
+            box-shadow: none !important;
+            border-color: rgb(204, 203, 203) !important;
+        }
+     }
+}
