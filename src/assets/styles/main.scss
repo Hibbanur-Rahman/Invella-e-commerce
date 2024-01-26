@@ -297,4 +297,16 @@ button {
     .homeBanner-lower {
         height: auto !important;
     }
+    .item{
+        height: 60vh !important;
+        .item-img{
+            height: 40% !important;
+        }
+    }
+    .bands-item{
+        img{
+            width: 98% !important;
+            height: 90px !important;
+        }
+    }
 }

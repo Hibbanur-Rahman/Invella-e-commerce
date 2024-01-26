@@ -1,9 +1,9 @@
 import paymentLogo from "../assets/images/payment-footer.webp";
 const Footer = () => {
   return (
-    <section className="footer  m-0 p-5 ">
-      <div className=" row m-0 p-0 align-items-baseline  justify-content-between p-5">
-        <div className="col-2">
+    <section className="footer  m-0 p-md-5 ">
+      <div className=" row m-0 p-0 align-items-baseline  justify-content-between pt-5 p-md-5">
+        <div className="col-12 col-md-2 p-3 p-md-0">
           <div className="section-heading pb-2 mb-3 ">
             <h5 className="m-0 p-0 text-light">INVELLA</h5>
           </div>
@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="col-2">
+        <div className="col-12 col-md-2 p-3 p-md-0">
           <div className="section-heading pb-2 mb-3">
             <h5 className="m-0 p-0 text-light">CUSTOMER SERVICE</h5>
           </div>
@@ -51,7 +51,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="col-2">
+        <div className="col-12 col-md-2 p-3 p-md-0">
           <div className="section-heading pb-2 mb-3">
             <h5 className="m-0 p-0 text-light">USEFUL LINKS</h5>
           </div>
@@ -86,7 +86,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="col-2">
+        <div className="col-12 col-md-2 p-3 p-md-0">
           <div className="section-heading pb-2 mb-3">
             <h5 className="m-0 p-0 text-light">BRAND STRAPS</h5>
           </div>
@@ -153,7 +153,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-12 col-md-3">
           <div className="section-heading pb-2 mb-3">
             <h5 className="m-0 p-0 text-light">GET IN TOUCH</h5>
           </div>

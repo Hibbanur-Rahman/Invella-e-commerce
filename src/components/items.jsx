@@ -1,8 +1,8 @@
 const Items = (props) => {
   return (
-    <div className="col-12 col-sm-6 col-md-3 item">
+    <div className="col-6 col-sm-6 col-md-3 item">
       <a
-        href="/Invella-e-commerce/watchStrapBySize"
+        href="#"
         className="text-decoration-none text-black"
       >
         <div className="item-img position-relative ">

@@ -1,6 +1,6 @@
 const NewsItem = (props) => {
   return (
-    <div className="News-Item col-3 pb-2">
+    <div className="News-Item col-12 col-md-3 pb-2">
       <div className="card rounded-0  border-1  border-top-0 border-end-0 border-start-0  ">
         <img className="rounded-2 rounded-bottom-0 " src={props.image} alt="" />
 

@@ -15,13 +15,13 @@ const Home = () => {
       <HomeBanner />
 
       {/* =============== Latest-arrival ============= */}
-      <div className="latest-arrival container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="latest-arrival container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">LATEST ARRIVALS</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center">
           <Items
             price={1001}
             description={
@@ -56,13 +56,13 @@ const Home = () => {
       </div>
 
       {/* =============== Watch Bands ============= */}
-      <div className="Watch-bands container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="Watch-bands container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">WATCH BANDS</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <ItemBands image={require("../assets/images/brands-1.webp")} />
           <ItemBands image={require("../assets/images/brands-2.webp")} />
           <ItemBands image={require("../assets/images/brands-3.webp")} />
@@ -71,13 +71,13 @@ const Home = () => {
       </div>
 
       {/* =============== Watch Bands ============= */}
-      <div className="Watch-bands container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="Watch-bands container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">WATCH BANDS</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <ItemBands image={require("../assets/images/brands-5.webp")} />
           <ItemBands image={require("../assets/images/brands-6.webp")} />
           <ItemBands image={require("../assets/images/brands-7.webp")} />
@@ -89,13 +89,13 @@ const Home = () => {
       </div>
 
       {/* =============== Best-seller ============= */}
-      <div className="Best-seller container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="Best-seller container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">BEST SELLER</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <Items
             price={349}
             description={"Invella Strap for Honor Band 3 (Silicon)"}
@@ -126,7 +126,7 @@ const Home = () => {
       {/* =============== Watch-quote ============= */}
       <div className="Watch-quote row m-0 p-0 align-items-center justify-content-center">
         <div className="inner-elements row m-0 p-0 align-items-center justify-content-center h-100 ">
-          <div className=" col-8 d-flex flex-column align-items-center  ">
+          <div className="col-12 col-md-8 d-flex flex-column align-items-center  ">
             <h3 className="text-center text-light">
               YOUR NO: 1 DESTINATION FOR WATCH BANDS
             </h3>
@@ -146,13 +146,13 @@ const Home = () => {
       </div>
 
       {/* =============== SmartWatch Case Cover ============= */}
-      <div className="case-cover container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="case-cover container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">SMARTWATCH CASE COVER</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <Items
             price={199}
             description={"Amazfit GTS Smartwatch Case Cover -Black"}
@@ -181,13 +181,13 @@ const Home = () => {
       </div>
 
       {/* =============== SmartWatch Charger ============= */}
-      <div className="watch-charger container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="watch-charger container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">SMARTWATCH CHARGER</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <Items
             price={499}
             description={
@@ -220,13 +220,13 @@ const Home = () => {
       </div>
 
       {/* =============== LATEST NEWS ============= */}
-      <div className="watch-charger container pt-5 d-flex align-items-center  justify-content-center  flex-column ">
+      <div className="watch-charger container p-0 pt-5 d-flex align-items-center  justify-content-center  flex-column ">
         <div className="row m-0 p-0 pb-5 pt-5 justify-content-center align-items-center w-100">
           <div className="col-3 line"></div>
           <h3 className="m-0 p-0 w-auto ps-3 pe-3">LATEST NEWS</h3>
           <div className="col-3 line"></div>
         </div>
-        <div className="row m-0 p-0 overflow-hidden col-10 justify-content-center p-2">
+        <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <NewsItem
             image={require("../assets/images/news-1.webp")}
             heading="THE BOLD AND TIMELESS LUMINOX MEN’S 3051 EVO NAVY SEAL COLORMARK WATCH"
