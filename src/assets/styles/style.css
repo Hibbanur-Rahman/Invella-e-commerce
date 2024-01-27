@@ -219,6 +219,13 @@ button:hover {
   height: 120px !important;
 }
 
+.itemsByCategory {
+  overflow: hidden !important;
+}
+.itemsByCategory img {
+  height: 500px !important;
+}
+
 @media screen and (max-width: 550px) and (min-width: 100px) {
   .homeBanner-lower {
     height: auto !important;
