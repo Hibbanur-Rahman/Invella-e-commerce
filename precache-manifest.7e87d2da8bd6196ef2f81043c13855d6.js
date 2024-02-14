@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de6d7625c6b67c158debd036cedff216",
+    "revision": "6c6485ec26b856cf7bd23c284b567e31",
     "url": "/Invella-e-commerce/index.html"
   },
   {
-    "revision": "e57f22db867a8178e5e3",
+    "revision": "bf54125cdf709ecfa8d2",
     "url": "/Invella-e-commerce/static/css/main.839aa791.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Invella-e-commerce/static/js/2.cf23b457.chunk.js"
   },
   {
-    "revision": "e57f22db867a8178e5e3",
-    "url": "/Invella-e-commerce/static/js/main.40b45c2e.chunk.js"
+    "revision": "bf54125cdf709ecfa8d2",
+    "url": "/Invella-e-commerce/static/js/main.f3073992.chunk.js"
   },
   {
     "revision": "07ad4ab61895dee3c532",

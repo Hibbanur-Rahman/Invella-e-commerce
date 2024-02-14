@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Invella-e-commerce/precache-manifest.ec93d1eba77b35a222c58340e110e1cd.js"
+  "/Invella-e-commerce/precache-manifest.7e87d2da8bd6196ef2f81043c13855d6.js"
 );
 
 self.addEventListener('message', (event) => {
