@@ -1,11 +1,8 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
 import Banner from "../components/banner";
 import "../assets/styles/login.css";
 const Login = () => {
   return (
     <>
-      <Navbar />
       <Banner head="MY ACCOUNT" path="Home / My account" />
       <div className="login row m-0 p-0 justify-content-center mt-5 mb-5 pt-5 pb-5">
         <div className="col-12 col-md-5 p-5">
@@ -100,7 +97,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -1,11 +1,8 @@
-import Navbar from "../components/Navbar";
 import Banner from "../components/banner";
-import Footer from "../components/footer";
 import ItemsByCategory from "../components/itemByCategory";
 const WatchStrapBySize = () => {
   return (
     <>
-      <Navbar />
       <Banner head="WATCH STRAP BY SIZES" path="Home / Watch Straps By Size" />
       <div className="row m-0 p-0">
         <ItemsByCategory
@@ -34,7 +31,6 @@ const WatchStrapBySize = () => {
           itemCategoryDetails="28MM WATCH STRAPS "
         />
       </div>
-      <Footer />
     </>
   );
 };

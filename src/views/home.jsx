@@ -1,16 +1,11 @@
-import Navbar from "../components/Navbar";
 import HomeBanner from "../components/homeBanner";
 import Items from "../components/items";
 import ItemBands from "../components/itemBands";
 import NewsItem from "../components/news_Item";
-import Footer from "../components/footer";
 
 const Home = () => {
   return (
     <div className="row m-0 p-0 d-flex align-items-center justify-content-center flex-column ">
-      {/* =============== Navbar ============= */}
-      <Navbar />
-
       {/* =============== Home Banner  ============= */}
       <HomeBanner />
 
@@ -262,8 +257,7 @@ const Home = () => {
         </button>
       </div>
 
-      {/* =============== Footer ============= */}
-      <Footer />
+
     </div>
   );
 };
