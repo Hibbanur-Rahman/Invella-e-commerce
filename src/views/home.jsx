@@ -1,3 +1,4 @@
+import React from 'react';
 import HomeBanner from "../components/homeBanner";
 import Items from "../components/items";
 import ItemBands from "../components/itemBands";

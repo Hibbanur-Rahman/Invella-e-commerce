@@ -1,3 +1,4 @@
+import React from 'react';
 const Items = (props) => {
   return (
     <div className="col-6 col-sm-6 col-md-3 item">

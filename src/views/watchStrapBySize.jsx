@@ -1,3 +1,4 @@
+import React from 'react';
 import Banner from "../components/banner";
 import ItemsByCategory from "../components/itemByCategory";
 const WatchStrapBySize = () => {

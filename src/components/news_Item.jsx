@@ -1,3 +1,6 @@
+import React from 'react';
+
+
 const NewsItem = (props) => {
   return (
     <div className="News-Item col-12 col-md-3 pb-2">

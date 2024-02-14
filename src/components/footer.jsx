@@ -1,3 +1,4 @@
+import React from 'react';
 import paymentLogo from "../assets/images/payment-footer.webp";
 const Footer = () => {
   return (
