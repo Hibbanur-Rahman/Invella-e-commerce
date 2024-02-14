@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Invella-e-commerce/static/css/main.1ad19d3c.css",
-    "main.js": "/Invella-e-commerce/static/js/main.71beb050.js",
+    "main.css": "/Invella-e-commerce/static/css/main.8de9fb17.css",
+    "main.js": "/Invella-e-commerce/static/js/main.fa5f091f.js",
     "static/media/watch-banner-2.webp": "/Invella-e-commerce/static/media/watch-banner-2.23efda3dd3fa7f26c84e.webp",
     "static/media/background-image.webp": "/Invella-e-commerce/static/media/background-image.b865fd29564a4f824d69.webp",
     "static/media/news-1.webp": "/Invella-e-commerce/static/media/news-1.30b066461f8a2c6c8ad0.webp",
@@ -33,11 +33,11 @@
     "static/media/smart-watch-case-2.webp": "/Invella-e-commerce/static/media/smart-watch-case-2.c05f635b49d384164a8c.webp",
     "static/media/charger-2.webp": "/Invella-e-commerce/static/media/charger-2.0eef7cbd8cd53de59ce1.webp",
     "index.html": "/Invella-e-commerce/index.html",
-    "main.1ad19d3c.css.map": "/Invella-e-commerce/static/css/main.1ad19d3c.css.map",
-    "main.71beb050.js.map": "/Invella-e-commerce/static/js/main.71beb050.js.map"
+    "main.8de9fb17.css.map": "/Invella-e-commerce/static/css/main.8de9fb17.css.map",
+    "main.fa5f091f.js.map": "/Invella-e-commerce/static/js/main.fa5f091f.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ad19d3c.css",
-    "static/js/main.71beb050.js"
+    "static/css/main.8de9fb17.css",
+    "static/js/main.fa5f091f.js"
   ]
 }
