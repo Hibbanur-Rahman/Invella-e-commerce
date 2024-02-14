@@ -28,7 +28,7 @@ const Login = () => {
       })
       if(response.status===200){
         console.log("Login Successful and the user:",response.data);
-        window.location.href = '/';
+        window.location.href = '#/user';
       }
       else{
         console.error("Login Failed");

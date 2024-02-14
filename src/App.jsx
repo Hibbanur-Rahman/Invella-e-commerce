@@ -1,8 +1,9 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import Home from "./views/home.jsx";
 import WatchStrapBySize from "./views/watchStrapBySize.jsx";
 import Login from "./views/login.jsx";
+import UserDashboard from "./views/userDashboard/userDashboard.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/footer.jsx";
 
@@ -19,8 +20,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/watchStrapBySize" element={<WatchStrapBySize />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user/*" element={<UserDashboard />} />
       </Routes>
-      
+
       {/* =============== Footer ============= */}
       <Footer />
     </div>
