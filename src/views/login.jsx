@@ -17,6 +17,7 @@ const Login = () => {
     userName:"",
     registerEmail:"",
     registerPassword:"",
+    registerPhone:""
   })
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -41,14 +42,16 @@ const Login = () => {
   const handleRegister=async (e)=>{
     e.preventDefault();
     try{
-      const response= await axios.post("http://localhost:8000/register",{
+      const response= await axios.post("http://localhost:8000/user-Register",{
         username:registerData.userName,
         email:registerData.registerEmail,
         password:registerData.registerPassword,
+        phone: registerData.registerPhone
       });
 
       if(response.status===200){
         console.log("Registraion successfull:",response.data);
+
       }else{
         console.error("Registration failed");
       }
@@ -141,6 +144,20 @@ const Login = () => {
                 id="userName"
                 name="userName"
                 value={registerData.userName}
+                onChange={handleRegisterInputChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="registerPhone" className="form-label">
+                Phone
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="registerPhone"
+                name="registerPhone"
+                value={registerData.registerPhone}
                 onChange={handleRegisterInputChange}
                 required
               />
