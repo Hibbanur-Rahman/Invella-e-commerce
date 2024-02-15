@@ -23,13 +23,13 @@ const Login = () => {
     e.preventDefault();
 
     try{
-      const response= await axios.post("http://localhost:8000/login",{
+      const response= await axios.post("http://localhost:8000/user-Login",{
         email:loginData.loginEmail,
         password:loginData.loginPassword,
       })
       if(response.status===200){
         console.log("Login Successful and the user:",response.data);
-        window.location.href = '#/user';
+        window.location.href = '/';
       }
       else{
         console.error("Login Failed");
@@ -73,7 +73,7 @@ const Login = () => {
       <div className="login row m-0 p-0 justify-content-center mt-5 mb-5 pt-5 pb-5">
         <div className="col-12 col-md-5 p-5">
           <form
-            action="/login"
+            action="/user-Login"
             method="post"
             className="login-form"
             onSubmit={handleLogin}
@@ -128,7 +128,7 @@ const Login = () => {
         </div>
         <div className="col-12 col-md-5 p-5">
           <form
-            action="/register"
+            action="/user-Register"
             method="post"
             className="login-form"
             onSubmit={handleRegister}
