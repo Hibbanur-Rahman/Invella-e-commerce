@@ -3,7 +3,7 @@ import axios from 'axios';
 import Banner from "../components/banner";
 import "../assets/styles/login.css";
 import Cookies from "js-cookie";
-
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -28,8 +28,10 @@ const Login = () => {
         password:loginData.loginPassword,
       })
       if(response.status===200){
+        const token= response.data.token;
         Cookies.set('token',token, { expires: 1 })
         console.log("Login Successful and the user:",response.data);
+        toast.success("login successfully!!!")
         window.location.href = '/';
       }
       else{

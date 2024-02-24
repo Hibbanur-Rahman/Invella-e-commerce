@@ -7,6 +7,9 @@ import UserDashboard from './views/userDashboard/userDashboard.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/footer.jsx';
 
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
 
 function App() {
@@ -24,6 +27,7 @@ function App() {
         </Routes>
       {/* =============== Footer ============= */}
       <Footer />
+      <ToastContainer/>
     </div>
   );
 }
