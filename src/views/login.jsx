@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Banner from "../components/banner";
 import "../assets/styles/login.css";
-
+import Cookies from "js-cookie";
 
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
         password:loginData.loginPassword,
       })
       if(response.status===200){
+        Cookies.set('token',token, { expires: 1 })
         console.log("Login Successful and the user:",response.data);
         window.location.href = '/';
       }
