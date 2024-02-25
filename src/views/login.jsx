@@ -1,74 +1,85 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import Banner from "../components/banner";
 import "../assets/styles/login.css";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
+
 const Login = () => {
-
-
   const [loginData, setLoginData] = useState({
     loginEmail: "",
     loginPassword: "",
   });
 
-  const [registerData,setRegisterData]= useState({
-    userName:"",
-    registerEmail:"",
-    registerPassword:"",
-    registerPhone:""
-  })
+  const [registerData, setRegisterData] = useState({
+    userName: "",
+    registerEmail: "",
+    registerPassword: "",
+    registerPhone: "",
+  });
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try{
-      const response= await axios.post("http://localhost:8000/user-Login",{
-        email:loginData.loginEmail,
-        password:loginData.loginPassword,
-      })
-      if(response.status===200){
-        const token= response.data.token;
-        Cookies.set('token',token, { expires: 1 })
-        console.log("Login Successful and the user:",response.data);
-        toast.success("login successfully!!!")
-        window.location.href = '/';
-      }
-      else{
+    try {
+      const response = await axios.post("http://localhost:8000/user-Login", {
+        email: loginData.loginEmail,
+        password: loginData.loginPassword,
+      });
+      if (response.status === 200) {
+        const token = response.data.data.token;
+        Cookies.set("token", token, { expires: 1 });
+        console.log("Login Successful and the user:", response.data);
+        toast.success("login successfully!!!");
+        setLoginData({
+          loginEmail: "",
+          loginPassword: "",
+        });
+        setTimeout(()=>{
+          window.location.href='/'
+        },4000)
+      } else {
         console.error("Login Failed");
       }
-    }catch(error){
-      console.error("Error:",error);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
-  const handleRegister=async (e)=>{
+  const handleRegister = async (e) => {
     e.preventDefault();
-    try{
-      const response= await axios.post("http://localhost:8000/user-Register",{
-        username:registerData.userName,
-        email:registerData.registerEmail,
-        password:registerData.registerPassword,
-        phone: registerData.registerPhone
+    try {
+      const response = await axios.post("http://localhost:8000/user-Register", {
+        username: registerData.userName,
+        email: registerData.registerEmail,
+        password: registerData.registerPassword,
+        phone: registerData.registerPhone,
       });
 
-      if(response.status===200){
-        console.log("Registraion successfull:",response.data);
-
-      }else{
+      if (response.status === 201) {
+        console.log("Registraion successfull:", response.data);
+        toast.success("Register Successfully");
+        setRegisterData({
+          userName: "",
+          registerEmail: "",
+          registerPassword: "",
+          registerPhone: "",
+        });
+      } else {
         console.error("Registration failed");
+        toast.error(response.data.message);
       }
-    }catch(error){
-      console.error("Error:",error);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("registration failed");
     }
-  }
-  const handleLoginInputChange=(e)=>{
-    setLoginData({...loginData,[e.target.name]:e.target.value});
-  }
-  const handleRegisterInputChange=(e)=>{
-    setRegisterData({...registerData,[e.target.name]:e.target.value})
-  }
-
+  };
+  const handleLoginInputChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+  const handleRegisterInputChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+  };
 
   return (
     <>

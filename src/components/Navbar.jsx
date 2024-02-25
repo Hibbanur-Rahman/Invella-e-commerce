@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import logo from "../assets/images/logo.png";
 import "../assets/styles/style.css";
 
 const Navbar = () => {
   const [isFixed, setIsFixed] = useState(false);
+  const [isUser, setIsUser] = useState(false);
+
   useEffect(() => {
+   
+  const token = Cookies.get("token");
+  console.log("isUser",isUser)
+  console.log("token",token)
+  if (token) {
+    setIsUser(true);
+  } else {
+    setIsUser(false);
+  }
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const offset = 100;
@@ -43,9 +55,16 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-2 d-flex align-items-center m-0 p-0 ps-4">
-            <Link className="text-black m-0 p-0 ms-3 me-2" to="/login">
-              <i className="bi bi-person-circle fs-2"></i>
-            </Link>
+            {isUser ? (
+              <Link className="text-black m-0 p-0 ms-3 me-2" to="/user">
+                <i className="bi bi-person-circle fs-2"></i>
+              </Link>
+            ) : (
+              <Link className="text-black m-0 p-0 ms-3 me-2" to="/login">
+                <i className="bi bi-person-circle fs-2"></i>
+              </Link>
+            )}
+           
             <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
               <i className="bi bi-heart fs-2"></i>
             </Link>
