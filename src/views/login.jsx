@@ -36,7 +36,13 @@ const Login = () => {
           loginPassword: "",
         });
         setTimeout(()=>{
-          window.location.href='/'
+          if(response.data.data.role=== 'user'){
+            window.location.href='/Invella-e-commerce/user/'
+          }
+          else if(response.data.data.role=== 'admin'){
+            window.location.href='/Invella-e-commerce/#/admin/'
+
+          }
         },4000)
       } else {
         console.error("Login Failed");
