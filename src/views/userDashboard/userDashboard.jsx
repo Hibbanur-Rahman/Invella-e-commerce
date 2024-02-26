@@ -13,7 +13,7 @@ const UserDashboard = () => {
     <div className="row m-0 p-0 justify-content-center pt-5 pb-5">
       <div className="col-10 d-flex">
         <UserDashboardSidebar />
-        <div className="col-9">
+        <div className="col-10 ps-5 pe-5">
           {" "}
           {/* Main content area */}
           <Routes>
