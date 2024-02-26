@@ -8,9 +8,10 @@ import Navbar from './components/Navbar.jsx';
 import Footer from './components/footer.jsx';
 
 
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
+import AdminDashboard from './views/adminDashboard/index.jsx';
 
 function App() {
   return (
@@ -23,11 +24,12 @@ function App() {
         <Route path="/watchStrapBySize" element={<WatchStrapBySize />} />
         <Route path="/login" element={<Login />} />
         <Route path="/user/*" element={<UserDashboard />} />
-      
-        </Routes>
+        <Route path="/admin/*" element={<AdminDashboard />} />
+
+      </Routes>
       {/* =============== Footer ============= */}
       <Footer />
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
