@@ -1,6 +1,6 @@
 const AccountDetails=()=>{
     return (
-        <div className="row m-0 p-0">
+        <div className="row m-0 p-0 w-100">
         <form action="">
           <div className="row">
             <div className="mb-3 col-6">
