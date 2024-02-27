@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
-const Category = () => {
 
-    const [categoryName, setCategoryName] = useState(null);
+const Category = () => {
+    const [categoryName, setCategoryName] = useState("");
+
     const handleAddCategory = async (e) => {
         e.preventDefault();
         try {
@@ -13,27 +14,26 @@ const Category = () => {
                 headers: {
                     Authorization: token
                 }
-            })
+            });
             console.log(response);
             if (response.status === 201) {
-                toast.success('adding successfully')
+                toast.success('Adding successfully');
             } else {
-                toast.error("failed to adding");
+                toast.error("Failed to add");
             }
         } catch (error) {
-            toast.error("Failed to adding category")
-            console.log("error is: ", error);
+            toast.error("Failed to add category");
+            console.log("Error: ", error);
         }
-    }
+    };
+
     const handleInputChange = (e) => {
-        setCategoryName(e.target.value)
-    }
+        setCategoryName(e.target.value);
+    };
+
     return (
         <div className="row m-0 p-0">
-            <form action="/add-category"
-                method="post"
-                onSubmit={handleAddCategory}
-            >
+            <form onSubmit={handleAddCategory}>
                 <div className="mb-3">
                     <label htmlFor="add-category" className="form-label">
                         Add Category
@@ -48,11 +48,10 @@ const Category = () => {
                         required
                     />
                 </div>
-                <button className="btn" onSubmit={handleAddCategory}>Submit</button>
+                <button type="submit" className="btn">Submit</button>
             </form>
         </div>
-    )
-}
-
+    );
+};
 
 export default Category;
