@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { decode } from "jwt-js-decode";
 
 import logo from "../assets/images/logo.png";
 import "../assets/styles/style.css";
@@ -8,17 +9,22 @@ import "../assets/styles/style.css";
 const Navbar = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [isUser, setIsUser] = useState(false);
-
+  const [profileLink, setProfileLink] = useState(null);
   useEffect(() => {
-   
-  const token = Cookies.get("token");
-  console.log("isUser",isUser)
-  console.log("token",token)
-  if (token) {
-    setIsUser(true);
-  } else {
-    setIsUser(false);
-  }
+    const token = Cookies.get("token");
+
+    console.log("isUser", isUser);
+    console.log("token", token);
+    if (token) {
+      let jwt = decode(token);
+      console.log(jwt.payload);
+
+      setIsUser(true);
+      setProfileLink(`/${jwt.payload.user.role}`);
+      console.log(jwt.payload.user.role);
+    } else {
+      setIsUser(false);
+    }
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const offset = 100;
@@ -31,7 +37,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   return (
     <>
@@ -56,7 +62,7 @@ const Navbar = () => {
           </div>
           <div className="col-2 d-flex align-items-center m-0 p-0 ps-4">
             {isUser ? (
-              <Link className="text-black m-0 p-0 ms-3 me-2" to="/user">
+              <Link className="text-black m-0 p-0 ms-3 me-2" to={profileLink}>
                 <i className="bi bi-person-circle fs-2"></i>
               </Link>
             ) : (
@@ -64,7 +70,7 @@ const Navbar = () => {
                 <i className="bi bi-person-circle fs-2"></i>
               </Link>
             )}
-           
+
             <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
               <i className="bi bi-heart fs-2"></i>
             </Link>

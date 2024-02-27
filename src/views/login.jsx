@@ -37,7 +37,7 @@ const Login = () => {
         });
         setTimeout(()=>{
           if(response.data.data.role=== 'user'){
-            window.location.href='/Invella-e-commerce/user/'
+            window.location.href='/Invella-e-commerce/#/user/'
           }
           else if(response.data.data.role=== 'admin'){
             window.location.href='/Invella-e-commerce/#/admin/'

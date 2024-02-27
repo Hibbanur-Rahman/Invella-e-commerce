@@ -10,13 +10,13 @@ import Category from "./category";
 import Users from "./users";
 import AccountDetails from "./accountDetails";
 
-
+import '../../assets/styles/dashboard.css'
 const AdminDashboard = () => {
     return (
         <div className="row m-0 p-0 justify-content-center pt-5 pb-5">
             <div className="col-10 d-flex">
                 <AdminDashboardSidebar />
-                <div className="col-9 d-flex">
+                <div className="col-10 d-flex">
                     <Routes>
                         <Route path='/' element={<Dashboard/>}/>
                         <Route path='/dashboard' element={<Dashboard/>}/>
