@@ -1,13 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
 import 'datatables.net-responsive-dt/css/responsive.dataTables.css';
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-responsive';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import itemImg1 from '../../assets/images/item-image-1.webp';
 
 const Product = () => {
     const tableRef = useRef(null);
+    const [categoryList, setCategoryList] = useState([]);
+    const [productDetails, setProductDetails] = useState({
+        productName: '',
+        price: '',
+        stock: '',
+        category: '',
+        description: '',
+        productImage: ''
+    });
 
     useEffect(() => {
         $(tableRef.current).DataTable({
@@ -15,24 +27,68 @@ const Product = () => {
         });
     }, []);
 
-    const handleInputChange = (e) => {
+    const handleAddProduct = async (e) => {
+        e.preventDefault();
+        try {
+            const token = Cookies.get('token');
+            const response = await axios.post('http://localhost:8000/add-product', productDetails, {
+                headers: {
+                    Authorization: token
+                }
+            });
+            console.log(response);
+            if (response.status === 201) {
+                toast.success('Product added successfully !!');
+            } else {
+                toast.error("Failed to add the product!!");
+            }
+        } catch (error) {
+            toast.error("Failed to add the product");
+            console.log("Error:", error);
+        }
+    };
 
-    }
+    const handleCategoryList = async () => {
+        try {
+            const token =Cookies.get('token');
+            const response = await axios.get('http://localhost:8000/view-category', {
+                headers: {
+                    Authorization: token
+                }
+            });
+            console.log(response);
+
+            if (response.status === 200) {
+                console.log("Category viewed successfully");
+                setCategoryList(response.data.data);
+                console.log(response.data.data);
+            } else {
+                console.log("Category view failed");
+            }
+        } catch (error) {
+            console.log("Error in category list:", error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    };
+
     return (
         <div className="product-table row m-0 p-0 w-100">
-            <div className="row justify-content-end ">
-                <button className='add-product btn bg-transparent  border border-2 rounded-2 w-auto p-3 pt-0 pb-0 btn-lg' data-bs-toggle="modal" data-bs-target="#staticBackdrop" type='button'><p className='p-0 m-0 fs-6'>+ Add</p></button>
+             <div className="row justify-content-end ">
+                <button className='add-product btn bg-transparent  border border-2 rounded-2 w-auto p-3 pt-0 pb-0 btn-lg' data-bs-toggle="modal" data-bs-target="#staticBackdrop" type='button' onClick={handleCategoryList}><p className='p-0 m-0 fs-6'>+ Add</p></button>
             </div>
             {/* <!-- Modal --> */}
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog  modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="staticBackdrop" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Add Product</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <form action="">
+                        <div className="modal-body">
+                            <form action="/add-product" method='post' onSubmit={handleAddProduct}>
                                 <div className="mb-3">
                                     <label htmlFor="product-name" className="form-label">
                                         Name
@@ -42,7 +98,7 @@ const Product = () => {
                                         className="form-control"
                                         id="product-name"
                                         name="productName"
-                                        value={''}
+                                        value={productDetails.productName}
                                         onChange={handleInputChange}
                                         required
                                     />
@@ -57,21 +113,21 @@ const Product = () => {
                                             className="form-control"
                                             id="price"
                                             name="price"
-                                            value={''}
+                                            value={productDetails.price}
                                             onChange={handleInputChange}
                                             required
                                         />
                                     </div>
                                     <div className="mb-3 col-6 pe-0">
                                         <label htmlFor="stock" className="form-label">
-                                            stock
+                                            Stock
                                         </label>
                                         <input
                                             type="text"
                                             className="form-control"
                                             id="stock"
                                             name="stock"
-                                            value={''}
+                                            value={productDetails.stock}
                                             onChange={handleInputChange}
                                             required
                                         />
@@ -81,33 +137,30 @@ const Product = () => {
                                     <label htmlFor="category" className="form-label">
                                         Category
                                     </label>
-                                    <select class="form-select form-select-md" aria-label="Large select example" id="category">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select className="form-select form-select-md" aria-label="Large select example" id="category" name="category" value={productDetails.category} onChange={handleInputChange}>
+                                        <option value="">Select category</option>
+                                        {categoryList.map((item, index) => (
+                                            <option value={item._id} key={index}>{item.name}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="mb-3 ps-0">
                                     <label htmlFor="description" className="form-label">
                                         Description
                                     </label>
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="description"></textarea>
+                                    <textarea className="form-control" placeholder="Leave a comment here" id="description" name='description' value={productDetails.description} onChange={handleInputChange}></textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" multiple />
+                                <div className="mb-3">
+                                    <label htmlFor="formFileMultiple" className="form-label">Product Image</label>
+                                    <input className="form-control" type="file" id="formFileMultiple" name='productImage' value={productDetails.productImage} onChange={handleInputChange} />
                                 </div>
-
+                                <button type="submit" className="btn btn-secondary">Save</button>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
-
                         </div>
                     </div>
                 </div>
             </div>
+            {/*========================== Product Table ============================ */}
             <table ref={tableRef} className="display w-100" style={{ width: '100%' }} >
                 <thead>
                     <tr>
