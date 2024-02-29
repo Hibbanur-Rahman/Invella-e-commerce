@@ -16,9 +16,12 @@ const AccountDetails=()=>{
     try{
         const token= Cookies.get('token');
         const decoded= decode(token);
+        const username= decoded.payload.user.username.split(' ')
         setUserDetails({
           email:decoded.payload.user.email,
-          username: decoded.payload.user.username
+          username: decoded.payload.user.username,
+          firstName:username[0],
+          lastName:username[1]
         })
         console.log(decoded.payload.user);
     }catch(error){
@@ -39,7 +42,7 @@ const AccountDetails=()=>{
                 className="form-control"
                 id="first-name"
                 name="firstname"
-                value="Hibbanur"
+                value={userDetails.firstName}
               />
             </div>
             <div className="mb-3 col-6">
@@ -50,8 +53,8 @@ const AccountDetails=()=>{
                 type="text"
                 className="form-control"
                 id="last-name"
-                name="firstname"
-                value="Rahman"
+                name="lastname"
+                value={userDetails.lastName}
               />
             </div>
           </div>
@@ -92,7 +95,7 @@ const AccountDetails=()=>{
                 type="text"
                 className="form-control"
                 id="current-password"
-                name="firstname"
+                name="currentPassword"
                 value=""
               />
               

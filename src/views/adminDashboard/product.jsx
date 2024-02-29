@@ -32,6 +32,7 @@ const Product = () => {
     e.preventDefault();
     try {
       const token = Cookies.get("token");
+      
       const response = await axios.post(
         "http://localhost:8000/add-product",
         productDetails,
@@ -41,7 +42,13 @@ const Product = () => {
           },
         }
       );
+      // const imageUpload= await axios.post('http://localhost:8000/uploads-product',{
+      //   headers:{
+      //     Authorization:token,
+      //   }
+      // })
       console.log(response);
+      // console.log(imageUpload)
       if (response.status === 201) {
         setProductDetails({
             productName: "",
@@ -101,6 +108,7 @@ const Product = () => {
       if (response.status === 200) {
         setProductList(response.data.data);
         console.log(response.data.data);
+
       } else {
         console.log(response);
       }
