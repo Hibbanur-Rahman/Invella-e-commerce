@@ -1,4 +1,31 @@
+import Cookies from "js-cookie";
+import { decode } from "jwt-js-decode";
+import { useEffect, useState } from "react";
 const AccountDetails=()=>{
+
+  const [userDetails,setUserDetails]= useState({
+    email:'',
+    username:'',
+    firstName:'',
+    lastName:''
+  })
+  useEffect(()=>{
+      handleAccountDetails();
+  },[])
+  const handleAccountDetails=()=>{
+    try{
+        const token= Cookies.get('token');
+        const decoded= decode(token);
+        setUserDetails({
+          email:decoded.payload.user.email,
+          username: decoded.payload.user.username
+        })
+        console.log(decoded.payload.user);
+    }catch(error){
+      console.log("error:",error);
+    }
+  }
+  
     return (
         <div className="row m-0 p-0 w-100">
         <form action="">
@@ -36,8 +63,8 @@ const AccountDetails=()=>{
                 type="text"
                 className="form-control"
                 id="display-name"
-                name="firstname"
-                value="Hibbanur Rahman"
+                name="displayName"
+                value={userDetails.username}
               />
                <div id="loginEmailHelp" className="form-text">
                   This will be how your name will be displayed in the account section and in reviews.
@@ -51,8 +78,8 @@ const AccountDetails=()=>{
                 type="text"
                 className="form-control"
                 id="email"
-                name="firstname"
-                value="hibbanrahmanhyt@gmail.com"
+                name="email"
+                value={userDetails.email}
               />
               
             </div>
