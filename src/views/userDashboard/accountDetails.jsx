@@ -1,6 +1,27 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { decode } from "jwt-js-decode";
 const AccountDetails = () => {
+  const [userDetails,setUserDetails]= useState({
+    email:'',
+    firstName:'',
+    lastName:'',
+    username:'',
+  })
+  const handleUserDetails= ()=>{
+    const token= Cookies.get('token')
+    const jwtDecode= decode(token);
+    const userName= jwtDecode.payload.user.username.split(' ');
+    setUserDetails({
+      email:jwtDecode.payload.user.email,
+      username:jwtDecode.payload.user.username,
+      firstName:userName[0],
+      lastName:userName[userName.length-1]
+    })
+  }
+  useEffect(()=>{
+    handleUserDetails()
+  },[]);
   return (
     <div className="row m-0 p-0">
       <form action="">
@@ -14,7 +35,7 @@ const AccountDetails = () => {
               className="form-control"
               id="first-name"
               name="firstname"
-              value="Hibbanur"
+              value={userDetails.firstName}
             />
           </div>
           <div className="mb-3 col-6">
@@ -25,8 +46,8 @@ const AccountDetails = () => {
               type="text"
               className="form-control"
               id="last-name"
-              name="firstname"
-              value="Rahman"
+              name="lastname"
+              value={userDetails.lastName}
             />
           </div>
         </div>
@@ -38,8 +59,8 @@ const AccountDetails = () => {
               type="text"
               className="form-control"
               id="display-name"
-              name="firstname"
-              value="Hibbanur Rahman"
+              name="username"
+              value={userDetails.username}
             />
              <div id="loginEmailHelp" className="form-text">
                 This will be how your name will be displayed in the account section and in reviews.
@@ -53,8 +74,8 @@ const AccountDetails = () => {
               type="text"
               className="form-control"
               id="email"
-              name="firstname"
-              value="hibbanrahmanhyt@gmail.com"
+              name="email"
+              value={userDetails.email}
             />
             
           </div>
