@@ -12,7 +12,7 @@ import itemImg1 from "../../assets/images/item-image-1.webp";
 const Product = () => {
   const tableRef = useRef(null);
   const [categoryList, setCategoryList] = useState([]);
-  const [productList, setProductList]=useState([]);
+  const [productList, setProductList] = useState([]);
   const [productDetails, setProductDetails] = useState({
     productName: "",
     price: "",
@@ -22,17 +22,21 @@ const Product = () => {
     productImage: "",
   });
 
-  useEffect(() => {
-    $(tableRef.current).DataTable({
-      responsive: true,
-    });
-  }, []);
 
+
+  useEffect(() => {
+    if (!$.fn.DataTable.isDataTable(tableRef.current)) {
+      // Initialize DataTable only if it hasn't been initialized yet
+      $(tableRef.current).DataTable({
+        responsive: true,
+      });
+    }
+  }, [productList]);
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
       const token = Cookies.get("token");
-      
+
       const response = await axios.post(
         "http://localhost:8000/add-product",
         productDetails,
@@ -51,12 +55,12 @@ const Product = () => {
       // console.log(imageUpload)
       if (response.status === 201) {
         setProductDetails({
-            productName: "",
-            price: "",
-            stock: "",
-            category: "",
-            description: "",
-            productImage: "",
+          productName: "",
+          price: "",
+          stock: "",
+          category: "",
+          description: "",
+          productImage: "",
         });
 
         handleProductsList();
@@ -108,7 +112,6 @@ const Product = () => {
       if (response.status === 200) {
         setProductList(response.data.data);
         console.log(response.data.data);
-
       } else {
         console.log(response);
       }
@@ -119,7 +122,9 @@ const Product = () => {
 
   useEffect(() => {
     handleProductsList();
+
   }, []);
+
   return (
     <div className="product-table row m-0 p-0 w-100">
       <div className="row justify-content-end ">
@@ -299,7 +304,7 @@ const Product = () => {
               </td>
             </tr>
           ))}
-        
+
 
           {/* Add more rows as needed */}
         </tbody>
