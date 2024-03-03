@@ -7,7 +7,6 @@ import "datatables.net-responsive";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
-import itemImg1 from "../../assets/images/item-image-1.webp";
 
 const Product = () => {
   const tableRef = useRef(null);
@@ -116,20 +115,9 @@ const Product = () => {
         },
       });
 
-
       if (response.status === 200) {
         setProductList(response.data.data);
         console.log(response.data.data);
-        productList.forEach(async (element)=>{
-          const imageUrlResponse= await axios.get(`http://localhost:8000/view-images/${element.productImage}`,{
-            headers:{
-              Authorization: token
-            }
-          })
-          console.log(imageUrlResponse)
-        })
-        
-
 
       } else {
         console.log(response);
@@ -301,10 +289,10 @@ const Product = () => {
           {productList.map((item, index) => (
             <tr className="pt-3 pb-3" key={item._id}>
               <td>{item.name}</td>
-              <td>
+               <td>
                 <img
-                  src={itemImg1}
-                  alt="item"
+                  src={`http://localhost:8000/uploads/${item.productImage}`}
+                  alt={item.name}
                   style={{ width: "140px", height: "70px" }}
                   className="rounded-3"
                 />
