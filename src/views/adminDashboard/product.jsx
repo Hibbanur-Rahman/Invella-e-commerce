@@ -22,7 +22,7 @@ const Product = () => {
     productImage: "",
   });
 
-
+  const productDetailsFormData = new FormData();
 
   useEffect(() => {
     if (!$.fn.DataTable.isDataTable(tableRef.current)) {
@@ -36,23 +36,26 @@ const Product = () => {
     e.preventDefault();
     try {
       const token = Cookies.get("token");
-
+      productDetailsFormData.append(
+        "productImage",
+        productDetails.productImage
+      );
+      productDetailsFormData.append("productName", productDetails.productName);
+      productDetailsFormData.append("price", productDetails.price);
+      productDetailsFormData.append("stock", productDetails.stock);
+      productDetailsFormData.append("category", productDetails.category);
+      productDetailsFormData.append("description", productDetails.description);
       const response = await axios.post(
         "http://localhost:8000/add-product",
-        productDetails,
+        productDetailsFormData,
         {
           headers: {
             Authorization: token,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      // const imageUpload= await axios.post('http://localhost:8000/uploads-product',{
-      //   headers:{
-      //     Authorization:token,
-      //   }
-      // })
       console.log(response);
-      // console.log(imageUpload)
       if (response.status === 201) {
         setProductDetails({
           productName: "",
@@ -97,7 +100,11 @@ const Product = () => {
   };
 
   const handleInputChange = (e) => {
-    setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    if (e.target.name === "productImage") {
+      setProductDetails({ ...productDetails, productImage: e.target.files[0] });
+    } else {
+      setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    }
   };
 
   const handleProductsList = async () => {
@@ -109,9 +116,21 @@ const Product = () => {
         },
       });
 
+
       if (response.status === 200) {
         setProductList(response.data.data);
         console.log(response.data.data);
+        productList.forEach(async (element)=>{
+          const imageUrlResponse= await axios.get(`http://localhost:8000/view-images/${element.productImage}`,{
+            headers:{
+              Authorization: token
+            }
+          })
+          console.log(imageUrlResponse)
+        })
+        
+
+
       } else {
         console.log(response);
       }
@@ -122,7 +141,6 @@ const Product = () => {
 
   useEffect(() => {
     handleProductsList();
-
   }, []);
 
   return (
@@ -164,6 +182,7 @@ const Product = () => {
                 action="/add-product"
                 method="post"
                 onSubmit={handleAddProduct}
+                enctype="multipart/form-data"
               >
                 <div className="mb-3">
                   <label htmlFor="product-name" className="form-label">
@@ -249,9 +268,10 @@ const Product = () => {
                   <input
                     className="form-control"
                     type="file"
+                    accept="image/*"
                     id="formFileMultiple"
                     name="productImage"
-                    value={productDetails.productImage}
+                    // value={productDetails.productImage}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -264,12 +284,7 @@ const Product = () => {
         </div>
       </div>
       {/*========================== Product Table ============================ */}
-      <table
-        ref={tableRef}
-        className="display w-100"
-        style={{ width: "100%" }}
-
-      >
+      <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -304,7 +319,6 @@ const Product = () => {
               </td>
             </tr>
           ))}
-
 
           {/* Add more rows as needed */}
         </tbody>

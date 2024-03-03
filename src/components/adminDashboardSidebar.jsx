@@ -85,20 +85,20 @@ const AdminDashboardSidebar = () => {
         </li>
         <li className="pt-3 pb-3 border border-1 border-top-0 border-start-0 border-end-0">
           <Link
-            to="/admin/downloads"
+            to="/admin/transactions"
             className="text-decoration-none text-secondary pt-2 pb-2 justify-content-between d-flex"
             >
-              <p className="m-0 p-0 w-auto ">Downloads</p>
+              <p className="m-0 p-0 w-auto ">Transactions</p>
               <img src={downloads} alt="Downloads Icon" className="w-auto"/>
   
           </Link>
         </li>
         <li className="pt-3 pb-3 border border-1 border-top-0 border-start-0 border-end-0">
           <Link
-            to="/admin/address"
+            to="/admin/reviews"
             className="text-decoration-none text-secondary pt-2 pb-2 justify-content-between d-flex"
             >
-             <p className="m-0 p-0 w-auto "> Address</p>
+             <p className="m-0 p-0 w-auto ">Reviews</p>
              <img src={address} alt="Address Icon" className="w-auto"/>
   
           </Link>

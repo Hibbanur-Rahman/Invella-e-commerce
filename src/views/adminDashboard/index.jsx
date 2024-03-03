@@ -9,8 +9,12 @@ import Product from "./product";
 import Category from "./category";
 import Users from "./users";
 import AccountDetails from "./accountDetails";
+import Transactions from "./transactions";
+
 
 import '../../assets/styles/dashboard.css'
+import Reviews from "./reviews";
+
 const AdminDashboard = () => {
     return (
         <div className="row m-0 p-0 justify-content-center pt-5 pb-5">
@@ -25,6 +29,8 @@ const AdminDashboard = () => {
                         <Route path='/category' element={<Category/>}/>
                         <Route path='/users-details' element={<Users/>}/>
                         <Route path='/account-details' element={<AccountDetails/>}/>
+                        <Route path='/transactions' element={<Transactions/>}></Route>
+                        <Route path='/reviews' element={<Reviews/>}></Route>
                     </Routes>
                 </div>
             </div>
