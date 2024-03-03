@@ -20,7 +20,7 @@ const AdminDashboard = () => {
         <div className="row m-0 p-0 justify-content-center pt-5 pb-5">
             <div className="col-10 d-flex">
                 <AdminDashboardSidebar />
-                <div className="col-10 d-flex">
+                <div className="col-10 d-flex ps-5 pe-5">
                     <Routes>
                         <Route path='/' element={<Dashboard/>}/>
                         <Route path='/dashboard' element={<Dashboard/>}/>
