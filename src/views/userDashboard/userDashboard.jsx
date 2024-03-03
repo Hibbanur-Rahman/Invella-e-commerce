@@ -6,7 +6,7 @@ import Dashboard from "./dashboard";
 import Orders from "./orders";
 import AccountDetails from "./accountDetails";
 import Downloads from "./downloads";
-import Address from "./addresses";
+import{ Address,BillingAddress,ShippingAddress} from "./addresses";
 
 const UserDashboard = () => {
   return (
@@ -23,6 +23,8 @@ const UserDashboard = () => {
             <Route path="/account-details" element={<AccountDetails />} />
             <Route path="/downloads" element={<Downloads />} />
             <Route path="/address" element={<Address />} />
+            <Route path="/billing-address" element={<BillingAddress />}/>
+            <Route path="/shipping-address" element={<ShippingAddress />}/>
           </Routes>
         </div>
       </div>
