@@ -116,7 +116,7 @@ const BillingAddress = () => {
             className="form-control mt-3"
             id="street-address"
             placeholder="Apartment, suite, unit, etc. (optional)"
-            name="street"
+            name="street1"
             value=""
             onChange=""
           />
