@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const Address = () => {
   return (
@@ -35,10 +35,30 @@ const Address = () => {
 };
 
 const BillingAddress = () => {
+  const [BillingAddressDetails, setBillingAddressDetails] = useState({
+    firstname: '',
+    lastname: '',
+    companyname: '',
+    country: '',
+    street: '',
+    street1: '',
+    city: '',
+    state: '',
+    pincode: '',
+    phone: '',
+    email: ''
+  });
+  const handleBillingAddress = () => {
+
+  }
+
+  const handleInputChange=(e)=>{
+      setBillingAddressDetails({...BillingAddressDetails,[e.target.name]:e.target.value})
+  }
   return (
     <div className="row m-0 p-0">
       <h1>Billing Address</h1>
-      <form action="">
+      <form action="/add-billing-address" method="post" onSubmit={handleBillingAddress}>
         <div className="row m-0 p-0">
           <div className="mb-3 col-6 p-0">
             <label htmlFor="first-name" className="form-label">
@@ -50,8 +70,8 @@ const BillingAddress = () => {
               id="first-name"
               placeholder="First name"
               name="firstname"
-              value=""
-              onChange=""
+              value={BillingAddressDetails.firstname}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3 col-6 pe-0">
@@ -64,8 +84,8 @@ const BillingAddress = () => {
               id="last-name"
               placeholder="Last name"
               name="lastname"
-              value=""
-              onChange=""
+              value={BillingAddressDetails.lastname}
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -79,8 +99,8 @@ const BillingAddress = () => {
             id="company-name"
             placeholder="Company name"
             name="companyname"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.companyname}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -93,8 +113,8 @@ const BillingAddress = () => {
             id="country"
             placeholder="India"
             name="country"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.country}
+            onChange={handleInputChange}
             disabled
           />
         </div>
@@ -108,8 +128,8 @@ const BillingAddress = () => {
             id="street-address"
             placeholder="House number and street name"
             name="street"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.street}
+            onChange={handleInputChange}
           />
           <input
             type="text"
@@ -117,8 +137,8 @@ const BillingAddress = () => {
             id="street-address"
             placeholder="Apartment, suite, unit, etc. (optional)"
             name="street1"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.street1}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -131,8 +151,8 @@ const BillingAddress = () => {
             id="city"
             placeholder="eg. Patna, Hyderabad"
             name="city"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.city}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -145,8 +165,8 @@ const BillingAddress = () => {
             id="state"
             placeholder="eg. Bihar, Telangana"
             name="state"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.state}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -159,8 +179,8 @@ const BillingAddress = () => {
             id="pincode"
             placeholder="eg. 847301"
             name="pincode"
-            value=""
-            onChange=""
+            value={BillingAddressDetails.pincode}
+            onChange={handleInputChange}
           />
         </div>
         <div className="row m-0 p-0">
@@ -174,8 +194,8 @@ const BillingAddress = () => {
               id="phone"
               placeholder="eg. +91-9973152523"
               name="phone"
-              value=""
-              onChange=""
+              value={BillingAddressDetails.phone}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3 col-6 pe-0">
@@ -188,13 +208,13 @@ const BillingAddress = () => {
               id="email"
               placeholder="eg. hibbanrahmanhyt@gmail.com"
               name="email"
-              value=""
-              onChange=""
+              value={BillingAddressDetails.email}
+              onChange={handleInputChange}
             />
           </div>
         </div>
 
-        <button className="btn text-light mt-3">SAVE ADDRESS</button>
+        <button className="btn text-light mt-3" onClick={handleBillingAddress}>SAVE ADDRESS</button>
       </form>
     </div>
   );
@@ -329,7 +349,7 @@ const ShippingAddress = () => {
             onChange=""
           />
         </div>
-       
+
 
         <button className="btn text-light mt-3">SAVE ADDRESS</button>
       </form>
