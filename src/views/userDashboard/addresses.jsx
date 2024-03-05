@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import Cookies from "js-cookie";
 const Address = () => {
   return (
     <div className="row m-0 p-0">
@@ -39,21 +42,50 @@ const BillingAddress = () => {
     firstname: '',
     lastname: '',
     companyname: '',
-    country: '',
+    country: 'India',
     street: '',
     street1: '',
-    city: '',
+    city:'',
     state: '',
     pincode: '',
     phone: '',
     email: ''
   });
-  const handleBillingAddress = () => {
+  const handleBillingAddress = async (e) => {
+    e.preventDefault();
+    try {
+      const token = Cookies.get('token');
+      const response = await axios.post('http://localhost:8000/add-billing-address', BillingAddressDetails, {
+        headers: {
+          Authorization: token,
+        }
+      })
 
+      console.log(response);
+      if (response.status == 201) {
+        toast.success("add billing address successfully!!");
+        setBillingAddressDetails({
+          firstname: '',
+          lastname: '',
+          companyname: '',
+          country: '',
+          street: '',
+          street1: '',
+          city: '',
+          state: '',
+          pincode: '',
+          phone: '',
+          email: ''
+        })
+      }
+    } catch (error) {
+      console.log("error to add Billing Address:", error);
+      toast.error("Failed to adding the billing address!!")
+    }
   }
 
-  const handleInputChange=(e)=>{
-      setBillingAddressDetails({...BillingAddressDetails,[e.target.name]:e.target.value})
+  const handleInputChange = (e) => {
+    setBillingAddressDetails({ ...BillingAddressDetails, [e.target.name]: e.target.value })
   }
   return (
     <div className="row m-0 p-0">
@@ -214,17 +246,63 @@ const BillingAddress = () => {
           </div>
         </div>
 
-        <button className="btn text-light mt-3" onClick={handleBillingAddress}>SAVE ADDRESS</button>
+        <button className="btn text-light mt-3" type="submit">SAVE ADDRESS</button>
       </form>
     </div>
   );
 };
 
 const ShippingAddress = () => {
+  const [ShippingAddressDetails,setShippingAddress]=useState({
+    firstname:'', 
+    lastname:'', 
+    companyname:'', 
+    country:'India', 
+    street:'', 
+    street1:'', 
+    city:'',
+    state:'',
+    pincode:''
+  })
+
+  const handleShippingAddress=async (e)=>{
+    e.preventDefault();
+    try{
+
+      const token= Cookies.get('token');
+      const response= await axios.post('http://localhost:8000/add-shipping-address',ShippingAddressDetails,{
+          headers:{
+            Authorization:token,
+          }
+      })
+      console.log(response);
+      if(response.status==201){
+        toast.success('added shipping address successfully!!');
+        setShippingAddress({
+          firstname:'', 
+          lastname:'', 
+          companyname:'', 
+          country:'India', 
+          street:'', 
+          street1:'', 
+          city:'',
+          state:'',
+          pincode:''
+        })
+      }
+    }catch(error){
+      console.log("error in adding the shipping address !!");
+      toast.error("Failed to add the shipping Address!!");
+    }
+  }
+
+  const handleInputChange=(e)=>{
+    setShippingAddress({...ShippingAddressDetails,[e.target.name]:e.target.value});
+  }
   return (
     <div className="row m-0 p-0">
       <h1>Shipping Address</h1>
-      <form action="">
+      <form action="/add-shipping-address" method='post' onSubmit={handleShippingAddress}>
         <div className="row m-0 p-0">
           <div className="mb-3 col-6 p-0">
             <label htmlFor="first-name" className="form-label">
@@ -236,8 +314,8 @@ const ShippingAddress = () => {
               id="first-name"
               placeholder="First name"
               name="firstname"
-              value=""
-              onChange=""
+              value={ShippingAddressDetails.firstname}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3 col-6 pe-0">
@@ -250,8 +328,8 @@ const ShippingAddress = () => {
               id="last-name"
               placeholder="Last name"
               name="lastname"
-              value=""
-              onChange=""
+              value={ShippingAddressDetails.lastname}
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -265,8 +343,8 @@ const ShippingAddress = () => {
             id="company-name"
             placeholder="Company name"
             name="companyname"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.companyname}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -279,8 +357,8 @@ const ShippingAddress = () => {
             id="country"
             placeholder="India"
             name="country"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.country}
+            onChange={handleInputChange}
             disabled
           />
         </div>
@@ -294,17 +372,17 @@ const ShippingAddress = () => {
             id="street-address"
             placeholder="House number and street name"
             name="street"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.street}
+            onChange={handleInputChange}
           />
           <input
             type="text"
             className="form-control mt-3"
             id="street-address"
             placeholder="Apartment, suite, unit, etc. (optional)"
-            name="street"
-            value=""
-            onChange=""
+            name="street1"
+            value={ShippingAddressDetails.street1}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -317,8 +395,8 @@ const ShippingAddress = () => {
             id="city"
             placeholder="eg. Patna, Hyderabad"
             name="city"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.city}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -331,8 +409,8 @@ const ShippingAddress = () => {
             id="state"
             placeholder="eg. Bihar, Telangana"
             name="state"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.state}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -345,13 +423,13 @@ const ShippingAddress = () => {
             id="pincode"
             placeholder="eg. 847301"
             name="pincode"
-            value=""
-            onChange=""
+            value={ShippingAddressDetails.pincode}
+            onChange={handleInputChange}
           />
         </div>
 
 
-        <button className="btn text-light mt-3">SAVE ADDRESS</button>
+        <button type="submit" className="btn text-light mt-3">SAVE ADDRESS</button>
       </form>
     </div>
   );
