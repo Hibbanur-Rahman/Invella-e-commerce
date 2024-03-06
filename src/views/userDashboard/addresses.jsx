@@ -8,7 +8,7 @@ const Address = () => {
 
   const handleViewBillingAddress=async ()=>{
       try{
-
+                
       }catch(error){
         console.log("error in viewing BillingAddress:",error);
       }
@@ -49,6 +49,14 @@ const Address = () => {
             </Link>
           </div>
           <p>You have not set up this type of address yet</p>
+          <div className="row m-0 p-0">
+            <p className="m-0 p-0">Manuu</p>
+            <p className="m-0 p-0">HIBBANUR RAHMAN</p>
+            <p className="m-0 p-0">Gacchibowli, Hyderabad,telangana, 500032</p>
+            <p className="m-0 p-0">Boys Hostel-3</p>
+            <p className="m-0 p-0">Hyderabad 500032</p>
+            <p className="m-0 p-0">Telangana</p>
+          </div>
         </div>
       </div>
     </div>
