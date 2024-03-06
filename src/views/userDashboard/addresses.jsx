@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 const Address = () => {
-  const [billingAddressDetails,setBillingAddressDetails]=useState(null);
+  const [billingAddressDetails, setBillingAddressDetails] = useState(null);
 
-  const handleViewBillingAddress=async ()=>{
-      try{
-                
-      }catch(error){
-        console.log("error in viewing BillingAddress:",error);
+  const handleViewBillingAddress = async () => {
+    try {
+      const token = Cookies.get("token");
+      const response = await axios.get(
+        "http://localhost:8000/view-billing-address",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setBillingAddressDetails(response.data.data);
+        console.log("billing:", billingAddressDetails);
       }
-  }
+    } catch (error) {
+      console.log("error in viewing BillingAddress:", error);
+    }
+  };
+
+  useEffect(() => {
+    handleViewBillingAddress();
+  }, []);
   return (
     <div className="row m-0 p-0">
       <p>
@@ -30,14 +47,25 @@ const Address = () => {
           </div>
           <p>You have not set up this type of address yet</p>
 
-          <div className="row m-0 p-0">
-            <p className="m-0 p-0">Manuu</p>
-            <p className="m-0 p-0">HIBBANUR RAHMAN</p>
-            <p className="m-0 p-0">Gacchibowli, Hyderabad,telangana, 500032</p>
-            <p className="m-0 p-0">Boys Hostel-3</p>
-            <p className="m-0 p-0">Hyderabad 500032</p>
-            <p className="m-0 p-0">Telangana</p>
-          </div>
+          {billingAddressDetails ?(
+            
+            <div className="row m-0 p-0">
+              <p className="m-0 p-0">{billingAddressDetails.company}</p>
+              <p className="m-0 p-0">
+                {billingAddressDetails.firstname} {billingAddressDetails.lastname}
+              </p>
+              <p className="m-0 p-0">
+                {billingAddressDetails.street}
+              </p>
+              <p className="m-0 p-0">{billingAddressDetails.street1}</p>
+              <p className="m-0 p-0">{billingAddressDetails.city} {billingAddressDetails.pincode}</p>
+              <p className="m-0 p-0">{billingAddressDetails.state}</p>
+            </div>
+          ):(
+            <p>hello</p>
+          )
+            
+          }
         </div>
         <div className="col-6 ps-5">
           <div className="row m-0 p-0 justify-content-between ">
@@ -65,63 +93,74 @@ const Address = () => {
 
 const BillingAddress = () => {
   const [BillingAddressDetails, setBillingAddressDetails] = useState({
-    firstname: '',
-    lastname: '',
-    companyname: '',
-    country: 'India',
-    street: '',
-    street1: '',
-    city:'',
-    state: '',
-    pincode: '',
-    phone: '',
-    email: ''
+    firstname: "",
+    lastname: "",
+    companyname: "",
+    country: "India",
+    street: "",
+    street1: "",
+    city: "",
+    state: "",
+    pincode: "",
+    phone: "",
+    email: "",
   });
   const handleBillingAddress = async (e) => {
     e.preventDefault();
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get("token");
       // const decodedUser= decode(token).payload.user._id;
-      
-      const response = await axios.post('http://localhost:8000/add-billing-address', BillingAddressDetails, {
-        headers: {
-          Authorization: token,
+
+      const response = await axios.post(
+        "http://localhost:8000/add-billing-address",
+        BillingAddressDetails,
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      })
+      );
 
       console.log(response);
       if (response.status == 201) {
         toast.success("add billing address successfully!!");
         setBillingAddressDetails({
-          firstname: '',
-          lastname: '',
-          companyname: '',
-          country: 'India',
-          street: '',
-          street1: '',
-          city: '',
-          state: '',
-          pincode: '',
-          phone: '',
-          email: ''
-        })
-        setTimeout(()=>{
-          window.location.href='#/user/address';
-        },2000)
+          firstname: "",
+          lastname: "",
+          companyname: "",
+          country: "India",
+          street: "",
+          street1: "",
+          city: "",
+          state: "",
+          pincode: "",
+          phone: "",
+          email: "",
+        });
+        setTimeout(() => {
+          window.location.href = "#/user/address";
+        }, 2000);
       }
     } catch (error) {
       console.log("error to add Billing Address:", error);
-      toast.error("Failed to adding the billing address!!")
+      toast.error("Failed to adding the billing address!!");
     }
-  }
+  };
 
   const handleInputChange = (e) => {
-    setBillingAddressDetails({ ...BillingAddressDetails, [e.target.name]: e.target.value })
-  }
+    setBillingAddressDetails({
+      ...BillingAddressDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="row m-0 p-0">
       <h1>Billing Address</h1>
-      <form action="/add-billing-address" method="post" onSubmit={handleBillingAddress}>
+      <form
+        action="/add-billing-address"
+        method="post"
+        onSubmit={handleBillingAddress}
+      >
         <div className="row m-0 p-0">
           <div className="mb-3 col-6 p-0">
             <label htmlFor="first-name" className="form-label">
@@ -277,63 +316,75 @@ const BillingAddress = () => {
           </div>
         </div>
 
-        <button className="btn text-light mt-3" type="submit">SAVE ADDRESS</button>
+        <button className="btn text-light mt-3" type="submit">
+          SAVE ADDRESS
+        </button>
       </form>
     </div>
   );
 };
 
 const ShippingAddress = () => {
-  const [ShippingAddressDetails,setShippingAddress]=useState({
-    firstname:'', 
-    lastname:'', 
-    companyname:'', 
-    country:'India', 
-    street:'', 
-    street1:'', 
-    city:'',
-    state:'',
-    pincode:''
-  })
+  const [ShippingAddressDetails, setShippingAddress] = useState({
+    firstname: "",
+    lastname: "",
+    companyname: "",
+    country: "India",
+    street: "",
+    street1: "",
+    city: "",
+    state: "",
+    pincode: "",
+  });
 
-  const handleShippingAddress=async (e)=>{
+  const handleShippingAddress = async (e) => {
     e.preventDefault();
-    try{
-
-      const token= Cookies.get('token');
-      const response= await axios.post('http://localhost:8000/add-shipping-address',ShippingAddressDetails,{
-          headers:{
-            Authorization:token,
-          }
-      })
+    try {
+      const token = Cookies.get("token");
+      const response = await axios.post(
+        "http://localhost:8000/add-shipping-address",
+        ShippingAddressDetails,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       console.log(response);
-      if(response.status==201){
-        toast.success('added shipping address successfully!!');
+      if (response.status == 201) {
+        toast.success("added shipping address successfully!!");
         setShippingAddress({
-          firstname:'', 
-          lastname:'', 
-          companyname:'', 
-          country:'India', 
-          street:'', 
-          street1:'', 
-          city:'',
-          state:'',
-          pincode:''
-        })
+          firstname: "",
+          lastname: "",
+          companyname: "",
+          country: "India",
+          street: "",
+          street1: "",
+          city: "",
+          state: "",
+          pincode: "",
+        });
       }
-    }catch(error){
+    } catch (error) {
       console.log("error in adding the shipping address !!");
       toast.error("Failed to add the shipping Address!!");
     }
-  }
+  };
 
-  const handleInputChange=(e)=>{
-    setShippingAddress({...ShippingAddressDetails,[e.target.name]:e.target.value});
-  }
+  const handleInputChange = (e) => {
+    setShippingAddress({
+      ...ShippingAddressDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="row m-0 p-0">
       <h1>Shipping Address</h1>
-      <form action="/add-shipping-address" method='post' onSubmit={handleShippingAddress}>
+      <form
+        action="/add-shipping-address"
+        method="post"
+        onSubmit={handleShippingAddress}
+      >
         <div className="row m-0 p-0">
           <div className="mb-3 col-6 p-0">
             <label htmlFor="first-name" className="form-label">
@@ -459,8 +510,9 @@ const ShippingAddress = () => {
           />
         </div>
 
-
-        <button type="submit" className="btn text-light mt-3">SAVE ADDRESS</button>
+        <button type="submit" className="btn text-light mt-3">
+          SAVE ADDRESS
+        </button>
       </form>
     </div>
   );
