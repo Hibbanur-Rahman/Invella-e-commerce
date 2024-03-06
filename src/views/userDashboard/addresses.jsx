@@ -4,6 +4,15 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 const Address = () => {
+  const [billingAddressDetails,setBillingAddressDetails]=useState(null);
+
+  const handleViewBillingAddress=async ()=>{
+      try{
+
+      }catch(error){
+        console.log("error in viewing BillingAddress:",error);
+      }
+  }
   return (
     <div className="row m-0 p-0">
       <p>
@@ -20,6 +29,15 @@ const Address = () => {
             </Link>
           </div>
           <p>You have not set up this type of address yet</p>
+
+          <div className="row m-0 p-0">
+            <p className="m-0 p-0">Manuu</p>
+            <p className="m-0 p-0">HIBBANUR RAHMAN</p>
+            <p className="m-0 p-0">Gacchibowli, Hyderabad,telangana, 500032</p>
+            <p className="m-0 p-0">Boys Hostel-3</p>
+            <p className="m-0 p-0">Hyderabad 500032</p>
+            <p className="m-0 p-0">Telangana</p>
+          </div>
         </div>
         <div className="col-6 ps-5">
           <div className="row m-0 p-0 justify-content-between ">
@@ -55,6 +73,8 @@ const BillingAddress = () => {
     e.preventDefault();
     try {
       const token = Cookies.get('token');
+      // const decodedUser= decode(token).payload.user._id;
+      
       const response = await axios.post('http://localhost:8000/add-billing-address', BillingAddressDetails, {
         headers: {
           Authorization: token,
@@ -68,7 +88,7 @@ const BillingAddress = () => {
           firstname: '',
           lastname: '',
           companyname: '',
-          country: '',
+          country: 'India',
           street: '',
           street1: '',
           city: '',
@@ -77,6 +97,9 @@ const BillingAddress = () => {
           phone: '',
           email: ''
         })
+        setTimeout(()=>{
+          window.location.href='#/user/address';
+        },2000)
       }
     } catch (error) {
       console.log("error to add Billing Address:", error);

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
 const Product = () => {
   const tableRef = useRef(null);
   const [categoryList, setCategoryList] = useState([]);

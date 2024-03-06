@@ -45,9 +45,11 @@ const Login = () => {
           }
         },4000)
       } else {
+        toast.error("Login Failed!!")
         console.error("Login Failed");
       }
     } catch (error) {
+      toast.error("Login Failed!!")
       console.error("Error:", error);
     }
   };
