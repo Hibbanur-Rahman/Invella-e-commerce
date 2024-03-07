@@ -141,6 +141,7 @@ const Product = () => {
           data-bs-target="#staticBackdrop"
           type="button"
           onClick={handleCategoryList}
+          
         >
           <p className="p-0 m-0 fs-6">+ Add</p>
         </button>
