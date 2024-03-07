@@ -1,43 +1,67 @@
-import React, { useEffect, useRef } from "react";
-import "datatables.net-dt/css/dataTables.dataTables.css";
-import "datatables.net-responsive-dt/css/responsive.dataTables.css";
-import $ from "jquery";
-import "datatables.net";
-import "datatables.net-responsive";
+import React from "react";
+import Box from '@mui/material/Box';
+import { DataGrid } from '@mui/x-data-grid';
+
 const Orders = () => {
-  const tableRef = useRef(null);
-  useEffect(() => {
-    $(tableRef.current).DataTable({
-      responsive: true,
-    });
-  }, []);
+
+  const columns = [
+    {
+      field: 'id',
+      headerName: 'ID',
+      width: 90
+    },
+    {
+      field: 'name',
+      headerName: 'Name',
+      width: 150,
+      editable: true
+    },
+    {
+      field: 'date',
+      headerName: 'Date',
+      width: 150,
+      editable: true
+    },
+    {
+      field: 'total',
+      headerName: 'Total',
+      width: 150,
+      editable: true
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      width: 150,
+      editable: true,
+      renderCell: (params) => (
+        <div className="btn btn-primary">{params.value}</div>
+      )
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      width: 150,
+      editable: true
+    }
+  ];
+
+  const rows = [
+    {
+      id: '100', name: 'Hibban', date: 'May 2023', total: '1023', status: 'success', action: '..'
+    }
+  ];
 
   return (
     <div className="row m-0 p-0">
-      <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Total</th>
-            <th>Status</th>
-            <th>actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#3210</td>
-            <td>Cortie Gemson</td>
-            <td> May 23,2021</td>
-            <td>Rs 132.00</td>
-            <td><button className="border border-0 w-auto badge rounded-pill bg-secondary">
-                  Complteed
-                </button></td>
-            <td>...</td>
-          </tr>
-        </tbody>
-      </table>
+      <Box sx={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      </Box>
     </div>
   );
 };

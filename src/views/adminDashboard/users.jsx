@@ -1,20 +1,37 @@
 import React, { useEffect, useRef, useState } from "react";
-import "datatables.net-dt/css/dataTables.dataTables.css";
-import "datatables.net-responsive-dt/css/responsive.dataTables.css";
-import $ from "jquery";
-import "datatables.net";
-import "datatables.net-responsive";
+import Box from '@mui/material/Box';
+import { DataGrid } from '@mui/x-data-grid';
 import axios from "axios";
 import Cookies from "js-cookie";
 const Users = () => {
   const [userList, setUserList] = useState([]);
 
-  const tableRef = useRef(null);
-  useEffect(() => {
-    $(tableRef.current).DataTable({
-      responsive: true,
-    });
-  }, []);
+  const columns=[
+    {
+      field:'username',
+      headerName:'Name',
+      width:90
+    },
+    {
+      field:'email',
+      headerName:'Email',
+      width:150
+    },
+    {
+      field:'status',
+      headerName:'Status',
+      width: 150,
+      renderCell: (params) => (
+        <div className="btn badge">{params.value}</div>
+      )
+    },
+    {
+      field:'action',
+      headerName:'Action',
+      width:150
+    }
+  ]
+
 
   const handleUserList = async () => {
     try {
@@ -42,7 +59,7 @@ const Users = () => {
   }, []);
   return (
     <div className="row m-0 p-0 w-100">
-      <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
+      {/* <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -65,7 +82,16 @@ const Users = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+      <Box sx={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={userList}
+          columns={columns}
+          pageSize={5}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      </Box>
     </div>
   );
 };
