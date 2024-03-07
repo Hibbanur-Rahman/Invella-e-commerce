@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 const Address = () => {
   const [billingAddressDetails, setBillingAddressDetails] = useState(null);
+  const [shippingAddressDetails, setShippingAddressDetails] = useState(null);
 
   const handleViewBillingAddress = async () => {
     try {
@@ -27,8 +28,30 @@ const Address = () => {
     }
   };
 
+  const handleViewShippingAddress = async (req, res) => {
+    try {
+      const token = Cookies.get("token");
+      const response = await axios.get(
+        "http://localhost:8000/view-shipping-address",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      console.log(response);
+      if (response.status == 200) {
+        setShippingAddressDetails(response.data.data);
+      }
+    } catch (error) {
+      console.log("error in viweing the shipping Address:", error);
+    }
+  };
+
   useEffect(() => {
     handleViewBillingAddress();
+    handleViewShippingAddress();
   }, []);
   return (
     <div className="row m-0 p-0">
@@ -39,52 +62,74 @@ const Address = () => {
         <div className="col-6 pe-5">
           <div className="row m-0 p-0 justify-content-between ">
             <h5 className="m-0 p-0 w-auto">Billing address</h5>
-            <Link to="/user/billing-address" className="w-auto">
-              <button className="border border-0 w-auto badge rounded-pill bg-secondary">
-                Add
-              </button>
-            </Link>
+            {billingAddressDetails ? (
+              <Link to="/user/billing-address" className="w-auto">
+                <button className="border border-0 w-auto badge rounded-pill bg-secondary">
+                  Edit
+                </button>
+              </Link>
+            ) : (
+              <Link to="/user/billing-address" className="w-auto">
+                <button className="border border-0 w-auto badge rounded-pill bg-secondary">
+                  Add
+                </button>
+              </Link>
+            )}
           </div>
-          <p>You have not set up this type of address yet</p>
 
-          {billingAddressDetails ?(
-            
+          {billingAddressDetails ? (
             <div className="row m-0 p-0">
               <p className="m-0 p-0">{billingAddressDetails.company}</p>
               <p className="m-0 p-0">
-                {billingAddressDetails.firstname} {billingAddressDetails.lastname}
+                {billingAddressDetails.firstname}{" "}
+                {billingAddressDetails.lastname}
               </p>
-              <p className="m-0 p-0">
-                {billingAddressDetails.street}
-              </p>
+              <p className="m-0 p-0">{billingAddressDetails.street}</p>
               <p className="m-0 p-0">{billingAddressDetails.street1}</p>
-              <p className="m-0 p-0">{billingAddressDetails.city} {billingAddressDetails.pincode}</p>
+              <p className="m-0 p-0">
+                {billingAddressDetails.city} {billingAddressDetails.pincode}
+              </p>
               <p className="m-0 p-0">{billingAddressDetails.state}</p>
             </div>
-          ):(
-            <p>hello</p>
-          )
-            
-          }
+          ) : (
+            <p>You have not set up this type of address yet</p>
+          )}
         </div>
         <div className="col-6 ps-5">
           <div className="row m-0 p-0 justify-content-between ">
             <h5 className="m-0 p-0 w-auto">Shipping address</h5>
-            <Link to="/user/shipping-address" className="w-auto">
-              <button className="border border-0 w-auto badge rounded-pill bg-secondary">
-                Add
-              </button>
-            </Link>
+            {shippingAddressDetails ? (
+              <Link to="/user/shipping-address" className="w-auto">
+                <button className="border border-0 w-auto badge rounded-pill bg-secondary">
+                  Edit
+                </button>
+              </Link>
+            ) : (
+              <Link to="/user/shipping-address" className="w-auto">
+                <button className="border border-0 w-auto badge rounded-pill bg-secondary">
+                  Add
+                </button>
+              </Link>
+            )}
           </div>
-          <p>You have not set up this type of address yet</p>
-          <div className="row m-0 p-0">
-            <p className="m-0 p-0">Manuu</p>
-            <p className="m-0 p-0">HIBBANUR RAHMAN</p>
-            <p className="m-0 p-0">Gacchibowli, Hyderabad,telangana, 500032</p>
-            <p className="m-0 p-0">Boys Hostel-3</p>
-            <p className="m-0 p-0">Hyderabad 500032</p>
-            <p className="m-0 p-0">Telangana</p>
-          </div>
+
+          {shippingAddressDetails ? (
+            <div className="row m-0 p-0">
+              <p className="m-0 p-0">{shippingAddressDetails.company}</p>
+              <p className="m-0 p-0">
+                {shippingAddressDetails.firstname}{" "}
+                {shippingAddressDetails.lastname}
+              </p>
+              <p className="m-0 p-0">{shippingAddressDetails.street}</p>
+              <p className="m-0 p-0">{shippingAddressDetails.street1}</p>
+              <p className="m-0 p-0">
+                {shippingAddressDetails.city} {shippingAddressDetails.pincode}
+              </p>
+              <p className="m-0 p-0">{shippingAddressDetails.state}</p>
+            </div>
+          ) : (
+            <p>You have not set up this type of address yet</p>
+          )}
         </div>
       </div>
     </div>
@@ -364,6 +409,9 @@ const ShippingAddress = () => {
           state: "",
           pincode: "",
         });
+        setTimeout(() => {
+          window.location.href = "#/user/address";
+        }, 2000);
       }
     } catch (error) {
       console.log("error in adding the shipping address !!");
