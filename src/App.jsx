@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
 import AdminDashboard from './views/adminDashboard/index.jsx';
+import ProductDetails from './views/productDetails.jsx';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/user/*" element={<UserDashboard />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
-
+        <Route path='/productDetails' element={<ProductDetails/>}/>
       </Routes>
       {/* =============== Footer ============= */}
       <Footer />

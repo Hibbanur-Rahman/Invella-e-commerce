@@ -34,7 +34,7 @@ const Orders = () => {
       width: 150,
       editable: true,
       renderCell: (params) => (
-        <div className="btn btn-primary">{params.value}</div>
+        <div className="btn badge bg-success">{params.value}</div>
       )
     },
     {

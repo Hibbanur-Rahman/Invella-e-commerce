@@ -1,37 +1,40 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from "axios";
 import Cookies from "js-cookie";
+
 const Users = () => {
   const [userList, setUserList] = useState([]);
 
-  const columns=[
+  const columns = [
     {
-      field:'username',
-      headerName:'Name',
-      width:90
+      field: 'username',
+      headerName: 'Name',
+      width: 150
     },
     {
-      field:'email',
-      headerName:'Email',
-      width:150
+      field: 'email',
+      headerName: 'Email',
+      width: 200
     },
     {
-      field:'status',
-      headerName:'Status',
+      field: 'status',
+      headerName: 'Status',
       width: 150,
-      renderCell: (params) => (
-        <div className="btn badge">{params.value}</div>
+      renderCell: () => (
+        <div className="btn badge bg-success">success</div>
       )
     },
     {
-      field:'action',
-      headerName:'Action',
-      width:150
+      field: 'action',
+      headerName: 'Action',
+      width: 150,
+      renderCell: () => (
+        <div className="">...</div>
+      )
     }
-  ]
-
+  ];
 
   const handleUserList = async () => {
     try {
@@ -44,9 +47,11 @@ const Users = () => {
       console.log(response);
 
       if (response.status === 200) {
-        // console.log(response.data.data)
-        setUserList(response.data.data);
-        console.log(userList);
+        const userData = response.data.data.map(user => ({
+          ...user,
+          id: user._id // Use _id as the unique identifier for each row
+        }));
+        setUserList(userData);
       } else {
         console.log("error in the user data models when viewing");
       }
@@ -54,35 +59,13 @@ const Users = () => {
       console.log("error:", error);
     }
   };
+
   useEffect(() => {
     handleUserList();
   }, []);
+
   return (
     <div className="row m-0 p-0 w-100">
-      {/* <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Status</th>
-            <th>action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userList.map((item, index) => (
-            <tr key={index}>
-              <td>{item.username}</td>
-              <td>{item.email}</td>
-              <td>Rahman@1234</td>
-              <td>
-                <span className="badge bg-success">Active</span>
-              </td>
-              <td>crud</td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       <Box sx={{ height: 400, width: '100%' }}>
         <DataGrid
           rows={userList}

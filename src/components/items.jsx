@@ -3,7 +3,7 @@ import React from 'react';
 const Items = (props) => {
   return (
     <div className="col-6 col-sm-6 col-md-3 item">
-      <a href="#" className="text-decoration-none text-black">
+      <a href="#/productDetails" className="text-decoration-none text-black">
         <div className="item-img position-relative ">
           <div className="item-discount m-0 p-0 w-auto position-absolute rounded-1">
             <p className="m-0 p-2 pt-0 pb-0" style={{ fontSize: "14px" }}>

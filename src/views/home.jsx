@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import HomeBanner from "../components/homeBanner";
 import Items from "../components/items";
 import ItemBands from "../components/itemBands";
@@ -24,7 +25,6 @@ import SmartWatchCaseImage2 from "../assets/images/charger-2.webp";
 import SmartWatchCaseImage3 from "../assets/images/charger-3.webp";
 import SmartWatchCaseImage4 from "../assets/images/charger-4.webp";
 
-
 import LatestNewsImage1 from "../assets/images/news-1.webp";
 import LatestNewsImage2 from "../assets/images/news-2.webp";
 import LatestNewsImage3 from "../assets/images/news-3.webp";
@@ -44,14 +44,16 @@ const Home = () => {
           <div className="col-3 line"></div>
         </div>
         <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center">
-          <Items
-            price={1001}
-            description={
-              "Invella 22mm Jubilee Style Curved Bracelet Watch Strap"
-            }
-            discountPercent={"-45%"}
-            image={LatestImage4}
-          />
+          
+            <Items
+              price={1001}
+              description={
+                "Invella 22mm Jubilee Style Curved Bracelet Watch Strap"
+              }
+              discountPercent={"-45%"}
+              image={LatestImage4}
+            />
+
           <Items
             price={1999}
             description={"Invella 22mm Premium Leather Watch Strap"}

@@ -2,25 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
-import "datatables.net-dt/css/dataTables.dataTables.css";
-import "datatables.net-responsive-dt/css/responsive.dataTables.css";
-import $ from "jquery";
-import "datatables.net";
-import "datatables.net-responsive";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
 
 const Category = () => {
-  const tableRef = useRef(null);
   const [categoryName, setCategoryName] = useState("");
   const [categoryList, setCategoryList] = useState([]);
 
-  useEffect(() => {
-    if (!$.fn.DataTable.isDataTable(tableRef.current)) {
-      // Initialize DataTable only if it hasn't been initialized yet
-      $(tableRef.current).DataTable({
-        responsive: true,
-      });
-    }
-  }, [categoryList]);
   const handleViewCategoryList = async () => {
     try {
       const token = Cookies.get("token");
@@ -31,7 +19,11 @@ const Category = () => {
       });
 
       if (response.status == 200) {
-        setCategoryList(response.data.data);
+        const list = response.data.data.map((listElement) => ({
+          ...listElement,
+          id: listElement._id,
+        }));
+        setCategoryList(list);
         console.log(categoryList);
       } else {
         console.log(
@@ -58,7 +50,7 @@ const Category = () => {
       console.log(response);
       if (response.status === 201) {
         toast.success("Adding successfully");
-        setCategoryName('');
+        setCategoryName("");
         handleViewCategoryList();
       } else {
         toast.error("Failed to add");
@@ -76,6 +68,28 @@ const Category = () => {
   useEffect(() => {
     handleViewCategoryList();
   }, []);
+
+  const columns = [
+    {
+      field: "name",
+      headerName: "Name",
+      width: 150,
+    },
+    {
+      field: "values",
+      headerName: "Values",
+      width: 150,
+      renderCell: () => {
+        <div className="">4</div>;
+      },
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 150,
+      renderCell: () => <div className="">...</div>,
+    },
+  ];
   return (
     <div className="row m-0 p-0">
       <form onSubmit={handleAddCategory}>
@@ -97,28 +111,17 @@ const Category = () => {
           Submit
         </button>
       </form>
-      <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>values</th>
-            <th>action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categoryList.map((item, index) => (
-            <tr className="pt-3 pb-3" key={item._id}>
-              <td>{item.name}</td>
-              <td>4</td>
-              <td>
-                <span className="badge bg-success">Instock</span>
-              </td>
-            </tr>
-          ))}
 
-          {/* Add more rows as needed */}
-        </tbody>
-      </table>
+      <div className="row m-0 p-0">
+        <Box sx={{ height: 400, width: "100%" }}>
+          <DataGrid
+            rows={categoryList}
+            columns={columns}
+            checkboxSelection
+            disableSelectionOnClick
+          />
+        </Box>
+      </div>
     </div>
   );
 };
