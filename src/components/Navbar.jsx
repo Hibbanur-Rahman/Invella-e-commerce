@@ -74,7 +74,7 @@ const Navbar = () => {
             <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
               <i className="bi bi-heart fs-2"></i>
             </Link>
-            <Link className="text-black m-0 p-0  ms-2 me-2" to="#">
+            <Link className="text-black m-0 p-0  ms-2 me-2" to="/cart">
               <i className="bi bi-cart3 fs-2"></i>
             </Link>
           </div>

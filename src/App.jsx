@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
 import AdminDashboard from './views/adminDashboard/index.jsx';
 import ProductDetails from './views/productDetails.jsx';
-
+import Cart from './views/cart.jsx';
 function App() {
   return (
     <div>
@@ -27,6 +27,7 @@ function App() {
         <Route path="/user/*" element={<UserDashboard />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path='/productDetails' element={<ProductDetails/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
       {/* =============== Footer ============= */}
       <Footer />
