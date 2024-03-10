@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Items = (props) => {
   return (
-    <div className="col-6 col-sm-6 col-md-3 item">
-      <a href="#/productDetails" className="text-decoration-none text-black">
+    <div className="col-6 col-sm-6 col-md-3 item" id={props.productId}>
+      <Link to={`/productDetails/${props.productId}`} className="text-decoration-none text-black">
         <div className="item-img position-relative ">
           <div className="item-discount m-0 p-0 w-auto position-absolute rounded-1">
             <p className="m-0 p-2 pt-0 pb-0" style={{ fontSize: "14px" }}>
@@ -33,7 +34,7 @@ const Items = (props) => {
         <div className="row m-0 p-0 pt-4">
           <button className="btn btn-lg addCart text-light">Add to cart</button>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

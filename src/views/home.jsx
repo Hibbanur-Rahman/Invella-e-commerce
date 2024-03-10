@@ -46,6 +46,7 @@ const Home = () => {
         <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center">
           
             <Items
+              productId={10011}
               price={1001}
               description={
                 "Invella 22mm Jubilee Style Curved Bracelet Watch Strap"
@@ -55,12 +56,14 @@ const Home = () => {
             />
 
           <Items
+          productId={10011}
             price={1999}
             description={"Invella 22mm Premium Leather Watch Strap"}
             discountPercent={"-40%"}
             image={LatestImage1}
           />
           <Items
+          productId={10011}
             price={2999}
             description={
               "Casio G-Shock GA-100 Watch Strap with Watchcase - Grey"
@@ -69,6 +72,7 @@ const Home = () => {
             image={LatestImage2}
           />
           <Items
+          productId={10011}
             price={3999}
             description={
               "Casio G-Shock GA-100 Watch Strap with Watchcase - Grey"
@@ -106,24 +110,28 @@ const Home = () => {
         </div>
         <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <Items
+          productId={10011}
             price={349}
             description={"Invella Strap for Honor Band 3 (Silicon)"}
             discountPercent={"-56%"}
             image={BestSellerImage1}
           />
           <Items
+          productId={10011}
             price={249}
             description={"Invella Strap for Samsung Fit E Band SM-R375(BLACK)"}
             discountPercent={"-69%"}
             image={BestSellerImage2}
           />
           <Items
+          productId={10011}
             price={399}
             description={"Invella Strap for Samsung Galaxy Fit SM-R370"}
             discountPercent={"-50%"}
             image={BestSellerImage3}
           />
           <Items
+          productId={10011}
             price={329}
             description={"Invella Strap for Huawei Band 2 Pro (Black)"}
             discountPercent={"-59%"}
@@ -163,24 +171,28 @@ const Home = () => {
         </div>
         <div className="row m-0 p-0 overflow-hidden col-12 col-md-10 justify-content-center p-2">
           <Items
+          productId={10011}
             price={199}
             description={"Amazfit GTS Smartwatch Case Cover -Black"}
             discountPercent={"-60%"}
             image={SmartWatchCaseImage1}
           />
           <Items
+          productId={10011}
             price={249}
             description={"Invella TPU Case Cover for Amazfit T-Rex Smartwatch"}
             discountPercent={"-50%"}
             image={SmartWatchCaseImage2}
           />
           <Items
+          productId={10011}
             price={249}
             description={"Amazfit GTS 2 Mini/ BIP watch Case (Black)"}
             discountPercent={"-50%"}
             image={SmartWatchCaseImage3}
           />
           <Items
+          productId={10011}
             price={329}
             description={"Amazfit GTS 2/GTS 2e watch Case (Black)"}
             discountPercent={"-59%"}

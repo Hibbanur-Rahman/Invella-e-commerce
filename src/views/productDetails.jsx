@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import "../assets/styles/productDetails.css";
 
 // Import Swiper React components
@@ -18,8 +18,50 @@ import productDetails2 from "../assets/images/product-details-2.webp";
 import productDetails3 from "../assets/images/product-details-3.webp";
 import productDetails4 from "../assets/images/product-details-4.webp";
 import trustBadge from "../assets/images/trust-badge.webp";
+import Cookies from "js-cookie";
+import axios from "axios";
+
+
+
 const ProductDetails = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const {productId}=useParams();
+  const [product,setProduct]=useState(null);
+
+  const handleProduct=async()=>{
+      try{
+        console.log(productId);
+        const token= Cookies.get('token');
+        const response= await axios.post('http://localhost:8000/view-product-Id',{productId},{
+          headers:{
+            Authorization:token,
+          }
+        })
+        console.log(response);
+        if(response.status==200){
+          setProduct(response.data.data);
+          setLoading(false);
+          console.log(response.data.data);
+        }
+      }catch(error){
+        console.log("error in product details: ",error);
+        setError(error.message);
+        setLoading(false);
+      }
+  }
+
+  useEffect(()=>{
+    handleProduct();
+  },[]);
+
+  if(loading){
+    return <div>Loading.....</div>
+  }
+  if(error){
+    return <div>Error:{error}</div>
+  }
   return (
     <>
       <div className="row m-0 p-0 justify-content-center p-lg-5 pt-5">
@@ -36,7 +78,7 @@ const ProductDetails = () => {
               className="mySwiper2"
             >
               <SwiperSlide>
-                <img src={productDetails1} alt="" className="w-100" />
+                <img src={`http://localhost:8000/uploads/${product.productImage}`} alt="" className="w-100" />
               </SwiperSlide>
               <SwiperSlide>
                 <img src={productDetails2} alt="" className="w-100" />
@@ -58,7 +100,7 @@ const ProductDetails = () => {
               className="mySwiper mt-3"
             >
               <SwiperSlide className="border border-1 rounded-2 overflow-hidden ">
-                <img src={productDetails1} alt="" className="w-100" />
+                <img src={`http://localhost:8000/uploads/${product.productImage}`} alt="" className="w-100" />
               </SwiperSlide>
               <SwiperSlide className="border border-1 rounded-2 overflow-hidden ">
                 <img src={productDetails2} alt="" className="w-100" />
@@ -74,7 +116,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="col-lg-4 mt-lg-0 mt-4">
-          <h3>Casio G-Shock GA-110 Watch Strap with Watchcase -(Army Grey)</h3>
+          <h3>{product.name}</h3>
           <div className="row m-0 p-0 align-items-center ">
             <i className="fa-solid fa-star w-auto m-0 p-0 text-warning "></i>
             <i className="fa-solid fa-star w-auto m-0 p-0 text-warning"></i>
@@ -120,9 +162,9 @@ const ProductDetails = () => {
           <div className="card p-4 pt-5 pb-5">
             <div className="row m-0 p-0 justify-content-center mb-3">
               <p className="m-0 p-0 w-auto text-secondary text-decoration-line-through fs-3">
-                ₹2,499.00
+                ₹{product.price}
               </p>
-              <p className="m-0 p-0 w-auto ps-2 fs-3">₹2,499.00</p>
+              <p className="m-0 p-0 w-auto ps-2 fs-3">₹{product.price}</p>
             </div>
             <div className="row m-0 p-0 justify-content-between align-items-center">
               <div className="col-3  m-0 p-0 pe-2 ">
@@ -163,7 +205,7 @@ const ProductDetails = () => {
           </div>
           <div className="row m-0 p-0 bg-white mt-3 p-5">
             <h4 className="m-0 p-0">
-              Casio G-Shock Watch Strap With Watchcase
+             {product.description}
             </h4>
 
             <p className="m-0 p-0 text-secondary mt-3">Compatible Model:</p>

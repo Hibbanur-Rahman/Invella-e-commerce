@@ -26,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/user/*" element={<UserDashboard />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
-        <Route path='/productDetails' element={<ProductDetails/>}/>
+        <Route path='/productDetails/:productId' element={<ProductDetails/>}/>
         <Route path='/cart' element={<Cart/>}/>
       </Routes>
       {/* =============== Footer ============= */}
