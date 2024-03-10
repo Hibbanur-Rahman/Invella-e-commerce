@@ -52,6 +52,11 @@ const ProductDetails = () => {
       }
   }
 
+
+  const handleAddToCart=()=>{
+    
+  }
+
   useEffect(()=>{
     handleProduct();
   },[]);
@@ -186,7 +191,7 @@ const ProductDetails = () => {
               </div>
 
               <Link to="/cart" className="col-9">
-                <button className="col-12 add-cart btn btn-primary  p-2 m-0 ps-5 pe-5">
+                <button className="col-12 add-cart btn btn-primary  p-2 m-0 ps-5 pe-5" onClick={handleAddToCart}>
                   ADD TO CART
                 </button>
               </Link>

@@ -1,16 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import "datatables.net-dt/css/dataTables.dataTables.css";
-import "datatables.net-responsive-dt/css/responsive.dataTables.css";
-import $ from "jquery";
-import "datatables.net";
-import "datatables.net-responsive";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
 const Product = () => {
-  const tableRef = useRef(null);
   const [categoryList, setCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [productDetails, setProductDetails] = useState({
@@ -24,14 +19,6 @@ const Product = () => {
 
   const productDetailsFormData = new FormData();
 
-  useEffect(() => {
-    if (!$.fn.DataTable.isDataTable(tableRef.current)) {
-      // Initialize DataTable only if it hasn't been initialized yet
-      $(tableRef.current).DataTable({
-        responsive: true,
-      });
-    }
-  }, [productList]);
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
@@ -117,9 +104,15 @@ const Product = () => {
       });
 
       if (response.status === 200) {
-        setProductList(response.data.data);
-        console.log(response.data.data);
+        // Map over the data and add an id property using the _id property
+        const productListWithId = response.data.data.map((item) => ({
+          ...item,
+          id: item._id,
+        }));
+        setProductList(productListWithId);
+        console.log(productListWithId);
 
+        console.log(response.data.data);
       } else {
         console.log(response);
       }
@@ -132,6 +125,63 @@ const Product = () => {
     handleProductsList();
   }, []);
 
+  const columns = [
+    {
+      field: "_id",
+      headerName: "ID",
+      width: 200,
+    },
+    {
+      field: "name",
+      headerName: "Name",
+      width: 200,
+    },
+    {
+      field: "productImage",
+      headerName: "Image",
+      width: 180,
+      renderCell: (params) => (
+        <img
+          src={`http://localhost:8000/uploads/${params.value}`}
+          alt={"productImage"}
+          style={{ width: "140px", height: "70px" }}
+          className="rounded-3"
+        />
+      ),
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      width: 100,
+    },
+    {
+      field: "reviews",
+      headerName: "Reviews",
+      width: 50,
+      renderCell: () => <div>4</div>,
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 200,
+    },
+    {
+      field: "stock",
+      headerName: "Stock Count",
+      width: 50,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      width: 120,
+      renderCell: () => <div className="btn badge bg-success">Instock</div>,
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      renderCell: () => <div>...</div>,
+    },
+  ];
   return (
     <div className="product-table row m-0 p-0 w-100">
       <div className="row justify-content-end ">
@@ -141,7 +191,6 @@ const Product = () => {
           data-bs-target="#staticBackdrop"
           type="button"
           onClick={handleCategoryList}
-          
         >
           <p className="p-0 m-0 fs-6">+ Add</p>
         </button>
@@ -274,45 +323,18 @@ const Product = () => {
         </div>
       </div>
       {/*========================== Product Table ============================ */}
-      <table ref={tableRef} className="display w-100" style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Reviews</th>
-            <th>Description</th>
-            <th>Stock Count</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productList.map((item, index) => (
-            <tr className="pt-3 pb-3" key={item._id}>
-              <td>{item.name}</td>
-               <td>
-                <img
-                  src={`http://localhost:8000/uploads/${item.productImage}`}
-                  alt={item.name}
-                  style={{ width: "140px", height: "70px" }}
-                  className="rounded-3"
-                />
-              </td>
-              <td>Rs {item.price}</td>
-              <td>{item.category}</td>
-              <td>4 star</td>
-              <td>{item.description}</td>
-              <td>{item.stock}</td>
-              <td>
-                <span className="badge bg-success">Instock</span>
-              </td>
-            </tr>
-          ))}
-
-          {/* Add more rows as needed */}
-        </tbody>
-      </table>
+     
+      <div className="row m-0 p-0 w-100">
+        <Box sx={{ height: 500, width: "100%" }}>
+          <DataGrid
+            rows={productList}
+            columns={columns}
+            pageSize={5}
+            checkboxSelection
+            disableSelectionOnClick
+          />
+        </Box>
+      </div>
     </div>
   );
 };

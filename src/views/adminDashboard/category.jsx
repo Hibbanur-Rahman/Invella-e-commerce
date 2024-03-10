@@ -79,9 +79,9 @@ const Category = () => {
       field: "values",
       headerName: "Values",
       width: 150,
-      renderCell: () => {
-        <div className="">4</div>;
-      },
+      renderCell: () => (
+        <div className="">4</div>
+      ),
     },
     {
       field: "action",
