@@ -11,3 +11,15 @@
     top: -14px;
     left: 30%;
 }
+.increment{
+    &:hover{
+        cursor: pointer;
+        background-color: #ecebeb;
+    }
+}
+.decrement{
+    &:hover{
+        cursor: pointer;
+        background-color: #ecebeb;
+    }
+}

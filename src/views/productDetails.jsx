@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/styles/productDetails.css";
 
@@ -20,56 +20,108 @@ import productDetails4 from "../assets/images/product-details-4.webp";
 import trustBadge from "../assets/images/trust-badge.webp";
 import Cookies from "js-cookie";
 import axios from "axios";
-
-
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const {productId}=useParams();
-  const [product,setProduct]=useState(null);
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
 
-  const handleProduct=async()=>{
-      try{
-        console.log(productId);
-        const token= Cookies.get('token');
-        const response= await axios.post('http://localhost:8000/view-product-Id',{productId},{
-          headers:{
-            Authorization:token,
-          }
-        })
-        console.log(response);
-        if(response.status==200){
-          setProduct(response.data.data);
-          setLoading(false);
-          console.log(response.data.data);
+  const [cartDetails, setCartDetails] = useState({
+    productId: productId,
+    quantity: 1,
+  });
+
+  const handleProduct = async () => {
+    try {
+      console.log(productId);
+      const token = Cookies.get("token");
+      const response = await axios.post(
+        "http://localhost:8000/view-product-Id",
+        { productId },
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      }catch(error){
-        console.log("error in product details: ",error);
-        setError(error.message);
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setProduct(response.data.data);
         setLoading(false);
+        console.log(response.data.data);
       }
-  }
+    } catch (error) {
+      console.log("error in product details: ", error);
+      setError(error.message);
+      setLoading(false);
+    }
+  };
 
+  const handleAddToCart = async () => {
+    const token = Cookies.get("token");
+    if (!token) {
+      toast.error("Please Login first!!");
+      setTimeout(() => {
+        window.location.href = "#/login";
+      }, 2000);
+    } else {
+      try {
+        console.log(cartDetails);
+        const response = await axios.post(
+          "http://localhost:8000/add-cart",
+          cartDetails,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          toast.success("product is added!!");
+        }
+      } catch (error) {
+        console.log("error in add to cart:", error);
+      }
+    }
+  };
 
-  const handleAddToCart=()=>{
-    
-  }
+  const handleQuantityIncrement = () => {
+    setCartDetails({
+      productId: productId,
+      quantity: cartDetails.quantity + 1,
+    });
+  };
 
-  useEffect(()=>{
+  const handleQuantityDecrement = () => {
+    if (cartDetails.quantity > 1) {
+      setCartDetails({
+        productId: productId,
+        quantity: cartDetails.quantity - 1,
+      });
+    } else {
+      setCartDetails({
+        productId: productId,
+        quantity: 1,
+      });
+    }
+  };
+  useEffect(() => {
     handleProduct();
-  },[]);
+  }, []);
 
-  if(loading){
-    return <div>Loading.....</div>
+  if (loading) {
+    return <div>Loading.....</div>;
   }
-  if(error){
-    return <div>Error:{error}</div>
+  if (error) {
+    return <div>Error:{error}</div>;
   }
   return (
     <>
-      <div className="row m-0 p-0 justify-content-center p-lg-5 pt-5">
+      <div className="product-details row m-0 p-0 justify-content-center p-lg-5 pt-5">
         <div className="col-lg-3 overflow-x-hidden pt-lg-0 pt-5 mt-lg-0 mt-5">
           {/* <img src={productDetails1} alt="" className="w-100" /> */}
           <div className="row m-0 p-0">
@@ -83,7 +135,11 @@ const ProductDetails = () => {
               className="mySwiper2"
             >
               <SwiperSlide>
-                <img src={`http://localhost:8000/uploads/${product.productImage}`} alt="" className="w-100" />
+                <img
+                  src={`http://localhost:8000/uploads/${product.productImage}`}
+                  alt=""
+                  className="w-100"
+                />
               </SwiperSlide>
               <SwiperSlide>
                 <img src={productDetails2} alt="" className="w-100" />
@@ -105,7 +161,11 @@ const ProductDetails = () => {
               className="mySwiper mt-3"
             >
               <SwiperSlide className="border border-1 rounded-2 overflow-hidden ">
-                <img src={`http://localhost:8000/uploads/${product.productImage}`} alt="" className="w-100" />
+                <img
+                  src={`http://localhost:8000/uploads/${product.productImage}`}
+                  alt=""
+                  className="w-100"
+                />
               </SwiperSlide>
               <SwiperSlide className="border border-1 rounded-2 overflow-hidden ">
                 <img src={productDetails2} alt="" className="w-100" />
@@ -176,25 +236,34 @@ const ProductDetails = () => {
                 <div className=" row  m-0 p-0 border border-1 rounded-2  ">
                   <div className="col-8 m-0 p-0 d-flex justify-content-center align-items-center border border-1 border-start-0 border-top-0 border-bottom-0">
                     <p className="m-0 p-0 text-center fs-4 text-secondary ">
-                      1
+                      {cartDetails.quantity}
                     </p>
                   </div>
                   <div className="col-4 m-0 p-0">
-                    <div className="d-flex justify-content-center align-items-center border border-1 border-top-0 border-end-0 border-start-0 m-0 p-0">
+                    <div
+                      className="increment d-flex justify-content-center align-items-center border border-1 border-top-0 border-end-0 border-start-0 m-0 p-0"
+                      onClick={handleQuantityIncrement}
+                    >
                       <i class="bi bi-plus-lg w-auto "></i>
                     </div>
-                    <div className="d-flex justify-content-center align-items-center m-0 p-0">
+                    <div
+                      className=" decrement d-flex justify-content-center align-items-center m-0 p-0"
+                      onClick={handleQuantityDecrement}
+                    >
                       <i class="bi bi-dash-lg w-auto"></i>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <Link to="/cart" className="col-9">
-                <button className="col-12 add-cart btn btn-primary  p-2 m-0 ps-5 pe-5" onClick={handleAddToCart}>
+              <div className="col-9">
+                <button
+                  className="col-12 add-cart btn btn-primary  p-2 m-0 ps-5 pe-5"
+                  onClick={handleAddToCart}
+                >
                   ADD TO CART
                 </button>
-              </Link>
+              </div>
             </div>
             <button className=" buy col-12 btn btn-lg text-light mt-2">
               BUY NOW
@@ -209,9 +278,7 @@ const ProductDetails = () => {
             <h5 className="m-0 p-0 text-secondary w-auto">Reviews(1)</h5>
           </div>
           <div className="row m-0 p-0 bg-white mt-3 p-5">
-            <h4 className="m-0 p-0">
-             {product.description}
-            </h4>
+            <h4 className="m-0 p-0">{product.description}</h4>
 
             <p className="m-0 p-0 text-secondary mt-3">Compatible Model:</p>
             <p className="m-0 p-0 text-secondary">GA-100/110/120/150/200/300</p>
