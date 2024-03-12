@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import productImage from "../assets/images/product-details-1.webp";
+
 import Cookies from "js-cookie";
 import axios from "axios";
+
+import '../assets/styles/productDetails.css'
 
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
@@ -16,13 +18,21 @@ const Cart = () => {
       });
       console.log(response);
       if (response.status === 200) {
-        setCartList(response.data.data);
+        setCartList(response.data.data.cartItems);
       }
     } catch (error) {
       console.log("something is wrong with viewing cartList:", error);
     }
   };
 
+
+  const handleIncrementQuantity=()=>{
+
+  }
+
+  const handleDecrementQuantity=()=>{
+    
+  }
   useEffect(() => {
     handleCartListView();
   }, []);
@@ -60,14 +70,14 @@ const Cart = () => {
                   <div className=" row  m-0 p-0 border border-1 rounded-2  ">
                     <div className="col-8 m-0 p-0 d-flex justify-content-center align-items-center border border-1 border-start-0 border-top-0 border-bottom-0">
                       <p className="m-0 p-0 text-center fs-4 text-secondary ">
-                        1
+                        {item.quantity}
                       </p>
                     </div>
                     <div className="col-4 m-0 p-0">
-                      <div className="d-flex justify-content-center align-items-center border border-1 border-top-0 border-end-0 border-start-0 m-0 p-0">
+                      <div className="increment d-flex justify-content-center align-items-center border border-1 border-top-0 border-end-0 border-start-0 m-0 p-0" onClick={handleIncrementQuantity}>
                         <i class="bi bi-plus-lg w-auto "></i>
                       </div>
-                      <div className="d-flex justify-content-center align-items-center m-0 p-0">
+                      <div className="decrement d-flex justify-content-center align-items-center m-0 p-0" onClick={handleDecrementQuantity}>
                         <i class="bi bi-dash-lg w-auto"></i>
                       </div>
                     </div>
@@ -75,7 +85,7 @@ const Cart = () => {
                 </div>
               </div>
               <div className="col-2 m-0 p-0">
-                <p className="m-0 p-0 w-auto text-primary fs-5">₹1,599.00 </p>
+                <p className="m-0 p-0 w-auto text-primary fs-5">{item.quantity*item.productId.price}</p>
               </div>
             </div>
           ))}
