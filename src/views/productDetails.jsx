@@ -69,7 +69,6 @@ const ProductDetails = () => {
       }, 2000);
     } else {
       try {
-        console.log(cartDetails);
         const response = await axios.post(
           "http://localhost:8000/add-cart",
           cartDetails,
@@ -80,10 +79,14 @@ const ProductDetails = () => {
           }
         );
         console.log(response);
+        if(response.status === 409){
+          toast.success("product already added!!");
+        }
         if (response.status === 201) {
           toast.success("product is added!!");
         }
       } catch (error) {
+        
         console.log("error in add to cart:", error);
       }
     }
