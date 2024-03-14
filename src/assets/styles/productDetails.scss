@@ -23,3 +23,18 @@
         background-color: #ecebeb;
     }
 }
+
+.product-image{
+    
+    position: relative;
+    height: 80px !important;
+    width: 80px !important;
+    img{
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .quantity-badge{
+        right: -10px !important;
+        top: -10px;
+    }
+}

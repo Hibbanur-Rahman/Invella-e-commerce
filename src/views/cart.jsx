@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -231,19 +231,23 @@ const Cart = () => {
             <div className="row m-0 p-0 justify-content-end mt-3  border border-1 border-top-0 border-start-0 border-end-0 pb-3">
               <p className="m-0 p-0  text-end">Shipping to</p>
 
-
               {shippingAddressDetails ? (
                 <>
                   <p className="m-0 p-0 text-end">
-                  {shippingAddressDetails.street}
+                    {shippingAddressDetails.street}
                   </p>
-                  <p className="m-0 p-0 text-end"> {shippingAddressDetails.city} {shippingAddressDetails.pincode}</p>
-                  <p className="m-0 p-0 text-end">{shippingAddressDetails.state}</p>
+                  <p className="m-0 p-0 text-end">
+                    {" "}
+                    {shippingAddressDetails.city}{" "}
+                    {shippingAddressDetails.pincode}
+                  </p>
+                  <p className="m-0 p-0 text-end">
+                    {shippingAddressDetails.state}
+                  </p>
                 </>
               ) : (
                 <p>Adding the shipping address</p>
               )}
-
             </div>
             <div className="row m-0 p-0 justify-content-between mt-3 align-items-center ">
               <p className="m-0 p-0 w-auto">Total</p>
@@ -255,9 +259,13 @@ const Cart = () => {
                 ₹640.22 IGST)
               </p>
             </div>
-            <button className="btn btn-primary mt-5 fs-6 border border-0  ">
-              PROCEED TO CHECKOUT
-            </button>
+            <div className="row m-0 p-0">
+              <Link to="/checkout" className="w-100">
+                <button className="btn btn-primary mt-5 fs-6 border border-0  w-100">
+                  PROCEED TO CHECKOUT
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
