@@ -262,7 +262,7 @@ const Checkout = () => {
             </button>
           </form>
         </div>
-        <div className="col-5 bg-light">
+        <div className="col-5 bg-light p-5">
           <div className="row m-0 p-0 pt-3 mt-3 align-items-center ">
             <div className="col-2">
               <div className="w-auto product-image rounded-3">
@@ -318,6 +318,25 @@ const Checkout = () => {
             </div>
           </div>
           
+          <div className="row m-0 p-0 border border-1 border-bottom-0 border-start-0 border-end-0 pt-3 mt-3">
+            <div className="row m-0 p-0 justify-content-between ">
+                <p className="fw-medium m-0 p-0 w-auto">Subtotal</p>
+                <p className="m-0 p-0 w-auto text-primary fw-medium fs-5">₹1,599.00</p>
+            </div>
+            <div className="row m-0 p-0 justify-content-between mt-3">
+                <p className="fw-medium m-0 p-0 w-auto">Shipping</p>
+                <p className="m-0 p-0 w-auto">Free Shipping for all Orders</p>
+            </div>
+            <div className="row m-0 p-0 justify-content-between mt-4">
+                <p className="fw-medium m-0 p-0 w-auto fs-5">Total</p>
+                <p className="m-0 p-0 w-auto fs-4">₹1,599.00
+                   <br/> <span className="m-0 p-0 fs-6">
+                        (includes Gst)
+                    </span>
+                </p>
+        
+            </div>
+          </div>
         </div>
       </div>
     </div>
