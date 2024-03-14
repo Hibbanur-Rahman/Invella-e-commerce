@@ -43,7 +43,7 @@ const Login = () => {
             window.location.href='/Invella-e-commerce/#/admin/'
 
           }
-        },4000)
+        },1000)
       } else {
         toast.error("Login Failed!!")
         console.error("Login Failed");

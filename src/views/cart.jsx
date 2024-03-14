@@ -9,6 +9,7 @@ import "../assets/styles/productDetails.css";
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [shippingAddressDetails, setShippingAddressDetails] = useState(null);
 
   const handleCartListView = async () => {
     try {
@@ -21,14 +22,6 @@ const Cart = () => {
       console.log(response);
       if (response.status === 200) {
         setCartList(response.data.data.cartItems);
-
-        // Calculate total amount
-        let total = 0;
-        cartList.forEach((item) => {
-          total += item.quantity * item.productId.price;
-        });
-        setTotalAmount(total);
-        console.log(totalAmount);
       }
     } catch (error) {
       console.log("something is wrong with viewing cartList:", error);
@@ -105,9 +98,9 @@ const Cart = () => {
     handleCartListView();
   };
 
-  const handleDeleteItem=async (item)=>{
-    try{
-      const token=Cookies.get('token');
+  const handleDeleteItem = async (item) => {
+    try {
+      const token = Cookies.get("token");
       const response = await axios.delete(
         "http://localhost:8000/delete-cart-item",
         {
@@ -122,14 +115,44 @@ const Cart = () => {
         toast.success("Product is removed!!");
         handleCartListView(); // Refresh cart after successful removal
       }
-    }catch(error){
+    } catch (error) {
       console.log("Something went wrong in the deleting the item!!");
     }
-  }
+  };
+
+  const handleViewShippingAddress = async (req, res) => {
+    try {
+      const token = Cookies.get("token");
+      const response = await axios.get(
+        "http://localhost:8000/view-shipping-address",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      console.log(response);
+      if (response.status == 200) {
+        setShippingAddressDetails(response.data.data);
+      }
+    } catch (error) {
+      console.log("error in viweing the shipping Address:", error);
+    }
+  };
 
   useEffect(() => {
     handleCartListView();
+    handleViewShippingAddress();
   }, []);
+
+  useEffect(() => {
+    let total = 0;
+    cartList.forEach((item) => {
+      total += item.quantity * item.productId.price;
+    });
+    setTotalAmount(total);
+  }, [cartList]);
 
   return (
     <div className="row m-0 p-0 justify-content-center pt-5 pb-5">
@@ -147,7 +170,10 @@ const Cart = () => {
               id={index}
             >
               <div className="d-flex col-6 align-items-center p-0">
-                <i class="bi bi-x-lg w-auto pe-2" onClick={()=>handleDeleteItem(item)}></i>
+                <i
+                  class="bi bi-x-lg w-auto pe-2"
+                  onClick={() => handleDeleteItem(item)}
+                ></i>
                 <img
                   src={`http://localhost:8000/uploads/${item.productId.productImage}`}
                   alt=""
@@ -204,16 +230,25 @@ const Cart = () => {
             </div>
             <div className="row m-0 p-0 justify-content-end mt-3  border border-1 border-top-0 border-start-0 border-end-0 pb-3">
               <p className="m-0 p-0  text-end">Shipping to</p>
-              <p className="m-0 p-0 text-end">
-                Gacchibowli,Hyderabad,telangana
-              </p>
-              <p className="m-0 p-0 text-end">500032,Hyderabad,500032</p>
-              <p className="m-0 p-0 text-end">Telangana</p>
+
+
+              {shippingAddressDetails ? (
+                <>
+                  <p className="m-0 p-0 text-end">
+                  {shippingAddressDetails.street}
+                  </p>
+                  <p className="m-0 p-0 text-end"> {shippingAddressDetails.city} {shippingAddressDetails.pincode}</p>
+                  <p className="m-0 p-0 text-end">{shippingAddressDetails.state}</p>
+                </>
+              ) : (
+                <p>Adding the shipping address</p>
+              )}
+
             </div>
             <div className="row m-0 p-0 justify-content-between mt-3 align-items-center ">
               <p className="m-0 p-0 w-auto">Total</p>
               <p className="m-0 p-0 w-auto fs-4 text-primary ">
-                ₹1,599.00{" "}
+                ₹{totalAmount}.00{" "}
                 <span className="m-0 p-0 fs-6 fw-medium ">(includes</span>{" "}
               </p>
               <p className="m-0 p-0 fs-6 fw-medium text-primary text-end">

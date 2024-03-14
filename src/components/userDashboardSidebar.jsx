@@ -17,7 +17,7 @@ const UserDashboardSidebar = () => {
     toast.success("logout successfully");
     setTimeout(() => {
       window.location.href = "/";
-    }, 4000);
+    }, 1000);
   };
 
   return (
