@@ -79,7 +79,7 @@ const Address = () => {
 
           {billingAddressDetails ? (
             <div className="row m-0 p-0">
-              <p className="m-0 p-0">{billingAddressDetails.company}</p>
+              <p className="m-0 p-0">{billingAddressDetails.companyname}</p>
               <p className="m-0 p-0">
                 {billingAddressDetails.firstname}{" "}
                 {billingAddressDetails.lastname}
@@ -115,7 +115,7 @@ const Address = () => {
 
           {shippingAddressDetails ? (
             <div className="row m-0 p-0">
-              <p className="m-0 p-0">{shippingAddressDetails.company}</p>
+              <p className="m-0 p-0">{shippingAddressDetails.companyname}</p>
               <p className="m-0 p-0">
                 {shippingAddressDetails.firstname}{" "}
                 {shippingAddressDetails.lastname}
@@ -150,6 +150,27 @@ const BillingAddress = () => {
     phone: "",
     email: "",
   });
+
+  const handleViewBillingAddress = async () => {
+    try {
+      const token = Cookies.get("token");
+      const response = await axios.get(
+        "http://localhost:8000/view-billing-address",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setBillingAddressDetails(response.data.data);
+        console.log("billing:", BillingAddressDetails);
+      }
+    } catch (error) {
+      console.log("error in viewing BillingAddress:", error);
+    }
+  };
   const handleBillingAddress = async (e) => {
     e.preventDefault();
     try {
@@ -198,6 +219,10 @@ const BillingAddress = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(()=>{
+    handleViewBillingAddress();
+  },[])
   return (
     <div className="row m-0 p-0">
       <h1>Billing Address</h1>

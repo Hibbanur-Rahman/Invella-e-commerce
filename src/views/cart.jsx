@@ -182,7 +182,7 @@ const Cart = () => {
                 <p className="m-0 p-0 w-auto ps-3">{item.productId.name}</p>
               </div>
               <div className="col-2 m-0 p-0 align-items-center">
-                <p className="m-0 p-0 w-auto fs-5">{item.productId.price} </p>
+                <p className="m-0 p-0 w-auto fs-5">₹{item.productId.price}.00 </p>
               </div>
               <div className="col-2 m-0 p-0">
                 <div className="col-8  m-0 p-0 pe-2 ">
@@ -211,7 +211,7 @@ const Cart = () => {
               </div>
               <div className="col-2 m-0 p-0">
                 <p className="m-0 p-0 w-auto text-primary fs-5">
-                  {item.quantity * item.productId.price}
+                ₹{item.quantity * item.productId.price}.00
                 </p>
               </div>
             </div>
