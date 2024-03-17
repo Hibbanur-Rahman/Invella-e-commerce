@@ -41,4 +41,11 @@
   height: 100px !important;
 }
 
+.order-received .thank-text {
+  color: rgb(36, 227, 36) !important;
+}
+.order-received .card {
+  border: 1.8px dashed rgb(36, 227, 36) !important;
+}
+
 /*# sourceMappingURL=productDetails.css.map */

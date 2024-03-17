@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -604,7 +605,9 @@ const Checkout = () => {
                   onChange=""
                   required
                 />
-                <p className="m-0 p-0 text-danger fs-6 opacity-50 ">Your Watch Model Name is a required field</p>
+                <p className="m-0 p-0 text-danger fs-6 opacity-50 ">
+                  Your Watch Model Name is a required field
+                </p>
               </div>
 
               <div className="row m-0 p-0 justify-content-between mt-5">
@@ -650,13 +653,41 @@ const Checkout = () => {
                 </div>
               </div>
               <h5 className="m-0 p-0 mb-3">Payment Methods</h5>
-              <p className="m-0 p-0 ">All transactions are secure and encrypted</p>
-              
+              <p className="m-0 p-0 mb-4 mt-3">
+                All transactions are secure and encrypted
+              </p>
+
               <div className="card p-4">
-                <div className="row m-0 p-0">
+                <div className="row m-0 p-0 pb-3">
                   <input type="radio" className="w-auto" />
-                  <p className="m-0 p-0 w-auto">Paytm Payment Gateway</p>
+                  <p className="m-0 p-0 w-auto ps-2">Paytm Payment Gateway</p>
                 </div>
+                <div className="row m-0 p-0 pt-3 border border-1 border-bottom-0 border-start-0 border-end-0">
+                  <input type="radio" className="w-auto" />
+                  <p className="m-0 p-0 w-auto ps-2">
+                    Cash on Delivery(₹59 Rs Extra)
+                  </p>
+                </div>
+                <p className="m-0 p-0 ps-3 pt-4">
+                  Pay with cash upon delivery(₹59.00 of added fee).
+                </p>
+              </div>
+              <p className="m-0 p-0 text-secondary mt-4">
+                Your personal data will be used to process your order, support
+                your experience throughout this website, and for other purposes
+                described in our privacy policy.
+              </p>
+              <div className="row m-0 p-0 mt-5">
+                <input type="checkbox" name="" id="" className="w-auto" />
+                <p className="m-0 p-0 w-auto ps-2">
+                  I have read and agree to the website terms and conditions
+                  <span className="text-danger ps-1">*</span>
+                </p>
+              </div>
+              <div className="row m-0 p-0 mt-4">
+                <Link to='/order-received' className="w-100 p-0 m-0">
+                  <button className="btn text-light w-100">PLACE ORDER</button>
+                </Link>
               </div>
             </div>
           ) : (

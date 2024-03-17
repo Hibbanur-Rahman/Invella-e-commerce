@@ -12,10 +12,13 @@ import AdminDashboard from './views/adminDashboard/index.jsx';
 import ProductDetails from './views/productDetails.jsx';
 import Cart from './views/cart.jsx';
 import Checkout from './views/checkout.jsx';
+import OrderReceived from './views/orderReceived.jsx';
+
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
+
 
 function App() {
   return (
@@ -32,6 +35,7 @@ function App() {
         <Route path='/productDetails/:productId' element={<ProductDetails/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/order-received' element={<OrderReceived/>}/>
       </Routes>
       {/* =============== Footer ============= */}
       <Footer />
