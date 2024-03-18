@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import Home from './views/home.jsx';
 import WatchStrapBySize from './views/watchStrapBySize.jsx';
@@ -19,6 +20,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/styles/style.css';
 
+// Load your Stripe publishable key
+const stripePromise = loadStripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+
 
 function App() {
   return (
@@ -34,7 +38,8 @@ function App() {
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path='/productDetails/:productId' element={<ProductDetails/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
+        {/* Wrap the Checkout component with the Elements provider */}
+        <Route path='/checkout' element={<Elements stripe={stripePromise}><Checkout/></Elements>}/>
         <Route path='/order-received' element={<OrderReceived/>}/>
       </Routes>
       {/* =============== Footer ============= */}

@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { loadStripe } from "@stripe/stripe-js";
+
 
 import "../assets/styles/productDetails.css";
 const Checkout = () => {
+
+  const [paymentError, setPaymentError] = useState(null);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+
   const [cartList, setCartList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [shippingToDifferent, setShippingToDifferent] = useState(false);
@@ -203,6 +209,29 @@ const Checkout = () => {
     setPaymentAfterShipping(true);
   };
 
+  
+  // Handle payment submission
+ 
+  const handlePayment = async () => {
+    try {
+      const token = Cookies.get('token');
+      const stripe = await loadStripe('pk_test_51NiiOgSAsO3Y0PmoXLtoCmw8jcEGuCd8XRFykRDonK0TLaRfEHObkFfenaBGl8TjnDGDnJoOctFSHVvmCJueZQKB001KX6rK3N');
+      const response = await axios.post('http://localhost:8000/payment', { items: cartList }, {
+        headers: {
+          Authorization: token
+        }
+      });
+      const result = stripe.redirectToCheckout({
+        sessionId: response.data.id // Assuming the session ID is returned directly in the response data
+      });
+      if (result.error) {
+        console.log(result.error);
+      }
+    } catch (error) {
+      console.error("Error processing payment:", error);
+      setPaymentError("Error processing payment. Please try again later.");
+    }
+  };
   useEffect(() => {
     handleViewBillingAddress();
     handleCartListView();
@@ -662,6 +691,12 @@ const Checkout = () => {
                   <input type="radio" className="w-auto" />
                   <p className="m-0 p-0 w-auto ps-2">Paytm Payment Gateway</p>
                 </div>
+                <div className="row m-0 p-0 pb-3 pt-3 border border-1 border-bottom-0 border-start-0 border-end-0">
+                  <input type="radio" className="w-auto" />
+                  <p className="m-0 p-0 w-auto ps-2">
+                    payment with Card (Stripe)
+                  </p>
+                </div>
                 <div className="row m-0 p-0 pt-3 border border-1 border-bottom-0 border-start-0 border-end-0">
                   <input type="radio" className="w-auto" />
                   <p className="m-0 p-0 w-auto ps-2">
@@ -685,7 +720,7 @@ const Checkout = () => {
                 </p>
               </div>
               <div className="row m-0 p-0 mt-4">
-                <Link to='/order-received' className="w-100 p-0 m-0">
+                <Link to="/order-received" className="w-100 p-0 m-0">
                   <button className="btn text-light w-100">PLACE ORDER</button>
                 </Link>
               </div>
@@ -694,7 +729,6 @@ const Checkout = () => {
             <div></div>
           )}
         </div>
-
         <div className="col-5 bg-light p-5">
           {cartList ? (
             cartList.map((item) => (
@@ -747,6 +781,11 @@ const Checkout = () => {
             </div>
           </div>
         </div>
+        {/* Add a payment button to trigger payment submission */}
+        <button onClick={handlePayment}>Pay with Card</button>
+        {/* Optionally, display payment error or success message */}
+        {paymentError && <div>Error: {paymentError}</div>}
+        {paymentSuccess && <div>Payment successful!</div>}
       </div>
     </div>
   );
