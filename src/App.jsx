@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import Home from './views/home.jsx';
-import WatchStrapBySize from './views/watchStrapBySize.jsx';
+import WatchStrapByCategory from './views/watchStrapByCategory.jsx';
 import Login from './views/login.jsx';
 import UserDashboard from './views/userDashboard/userDashboard.jsx';
 import Navbar from './components/Navbar.jsx';
@@ -32,7 +32,7 @@ function App() {
       {/* =============== Views ============= */}
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/watchStrapBySize" element={<WatchStrapBySize />} />
+        <Route path="/watchStrapByCategory/:categoryName" element={<WatchStrapByCategory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/user/*" element={<UserDashboard />} />
         <Route path="/admin/*" element={<AdminDashboard />} />

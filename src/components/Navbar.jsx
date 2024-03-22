@@ -92,30 +92,51 @@ const Navbar = () => {
               </p>
               <ul className="col-10 m-0 p-0  list-unstyled text-light bg-black position-absolute d-none flex-column ">
                 <Link
-                  to="/watchStrapBySize"
+                  to="/watchStrapByCategory/12mm Watch Strap"
                   className="text-decoration-none text-light"
                 >
                   <li className="p-3">12mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/14mm Watch Strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">14mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/16mm Watch Strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">16mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/18mm Watch Strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">18mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/20mm watch strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">20mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/21mm watch strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">21mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/22mm watch strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">22mm Watch Strap</li>
                 </Link>
-                <Link to="#" className="text-decoration-none text-light">
+                <Link
+                  to="/watchStrapByCategory/24mm watch strap"
+                  className="text-decoration-none text-light"
+                >
                   <li className="p-3">24mm Watch Strap</li>
                 </Link>
               </ul>
