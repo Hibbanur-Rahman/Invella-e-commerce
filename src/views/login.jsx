@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/user-Login", {
+      const response = await axios.post("http://54.86.160.111:8000/user-Login", {
         email: loginData.loginEmail,
         password: loginData.loginPassword,
       });
@@ -57,7 +57,7 @@ const Login = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/user-Register", {
+      const response = await axios.post("http://54.86.160.111:8000/user-Register", {
         username: registerData.userName,
         email: registerData.registerEmail,
         password: registerData.registerPassword,
