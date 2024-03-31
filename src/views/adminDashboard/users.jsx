@@ -39,7 +39,7 @@ const Users = () => {
   const handleUserList = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-Users", {
+      const response = await axios.get("http://54.86.160.111:8000/view-Users", {
         headers: {
           Authorization: token,
         },

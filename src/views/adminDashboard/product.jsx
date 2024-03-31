@@ -33,7 +33,7 @@ const Product = () => {
       productDetailsFormData.append("category", productDetails.category);
       productDetailsFormData.append("description", productDetails.description);
       const response = await axios.post(
-        "http://localhost:8000/add-product",
+        "http://54.86.160.111:8000/add-product",
         productDetailsFormData,
         {
           headers: {
@@ -67,7 +67,7 @@ const Product = () => {
   const handleCategoryList = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-category", {
+      const response = await axios.get("http://54.86.160.111:8000/view-category", {
         headers: {
           Authorization: token,
         },
@@ -97,7 +97,7 @@ const Product = () => {
   const handleProductsList = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-product", {
+      const response = await axios.get("http://54.86.160.111:8000/view-product", {
         headers: {
           Authorization: token,
         },
@@ -142,7 +142,7 @@ const Product = () => {
       width: 180,
       renderCell: (params) => (
         <img
-          src={`http://localhost:8000/uploads/${params.value}`}
+          src={`http://54.86.160.111:8000/uploads/${params.value}`}
           alt={"productImage"}
           style={{ width: "140px", height: "70px" }}
           className="rounded-3"

@@ -39,7 +39,7 @@ const ProductDetails = () => {
       console.log(productId);
       const token = Cookies.get("token");
       const response = await axios.post(
-        "http://localhost:8000/view-product-Id",
+        "http://54.86.160.111:8000/view-product-Id",
         { productId },
         {
           headers: {
@@ -70,7 +70,7 @@ const ProductDetails = () => {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:8000/add-cart",
+          "http://54.86.160.111:8000/add-cart",
           cartDetails,
           {
             headers: {
@@ -139,7 +139,7 @@ const ProductDetails = () => {
             >
               <SwiperSlide>
                 <img
-                  src={`http://localhost:8000/uploads/${product.productImage}`}
+                  src={`http://54.86.160.111:8000/uploads/${product.productImage}`}
                   alt=""
                   className="w-100"
                 />
@@ -165,7 +165,7 @@ const ProductDetails = () => {
             >
               <SwiperSlide className="border border-1 rounded-2 overflow-hidden ">
                 <img
-                  src={`http://localhost:8000/uploads/${product.productImage}`}
+                  src={`http://54.86.160.111:8000/uploads/${product.productImage}`}
                   alt=""
                   className="w-100"
                 />

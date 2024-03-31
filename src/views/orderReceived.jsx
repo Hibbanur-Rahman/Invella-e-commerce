@@ -10,7 +10,7 @@ const OrderReceived = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-billing-address",
+        "http://54.86.160.111:8000/view-billing-address",
         {
           headers: {
             Authorization: token,
@@ -31,7 +31,7 @@ const OrderReceived = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-shipping-address",
+        "http://54.86.160.111:8000/view-shipping-address",
         {
           headers: {
             Authorization: token,

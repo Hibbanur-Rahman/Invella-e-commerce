@@ -14,7 +14,7 @@ const Cart = () => {
   const handleCartListView = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-cart", {
+      const response = await axios.get("http://54.86.160.111:8000/view-cart", {
         headers: {
           Authorization: token,
         },
@@ -34,7 +34,7 @@ const Cart = () => {
       const newQuantity = parseInt(item.quantity) + 1;
       const token = Cookies.get("token");
       const response = await axios.post(
-        "http://localhost:8000/update-cart",
+        "http://54.86.160.111:8000/update-cart",
         { productId: item.productId._id, quantity: newQuantity },
         {
           headers: {
@@ -61,7 +61,7 @@ const Cart = () => {
       if (parseInt(item.quantity) === 1) {
         // If the quantity is already 1, remove the item from the cart
         const response = await axios.delete(
-          "http://localhost:8000/delete-cart-item",
+          "http://54.86.160.111:8000/delete-cart-item",
           {
             data: { productId: item.productId._id },
             headers: {
@@ -78,7 +78,7 @@ const Cart = () => {
         // If quantity is more than 1, decrement the quantity
         const newQuantity = parseInt(item.quantity) - 1;
         const response = await axios.post(
-          "http://localhost:8000/update-cart",
+          "http://54.86.160.111:8000/update-cart",
           { productId: item.productId._id, quantity: newQuantity },
           {
             headers: {
@@ -102,7 +102,7 @@ const Cart = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.delete(
-        "http://localhost:8000/delete-cart-item",
+        "http://54.86.160.111:8000/delete-cart-item",
         {
           data: { productId: item.productId._id },
           headers: {
@@ -124,7 +124,7 @@ const Cart = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-shipping-address",
+        "http://54.86.160.111:8000/view-shipping-address",
         {
           headers: {
             Authorization: token,
@@ -175,7 +175,7 @@ const Cart = () => {
                   onClick={() => handleDeleteItem(item)}
                 ></i>
                 <img
-                  src={`http://localhost:8000/uploads/${item.productId.productImage}`}
+                  src={`http://54.86.160.111:8000/uploads/${item.productId.productImage}`}
                   alt=""
                   style={{ height: "50px", width: "50px" }}
                 />

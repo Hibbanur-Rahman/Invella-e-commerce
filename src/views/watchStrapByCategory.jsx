@@ -15,7 +15,7 @@ const WatchStrapByCategory = () => {
   const handleProductList = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.post("http://localhost:8000/view-product-category", { categoryName }, {
+      const response = await axios.post("http://54.86.160.111:8000/view-product-category", { categoryName }, {
         headers: {
           Authorization: token,
         },
@@ -57,7 +57,7 @@ const WatchStrapByCategory = () => {
             price={element.price}
             description={element.description}
             discountPercent={"-43%"}
-            image={`http://localhost:8000/uploads/${element.productImage}`}
+            image={`http://54.86.160.111:8000/uploads/${element.productImage}`}
           />
         ))}
       </div>

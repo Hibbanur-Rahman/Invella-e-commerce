@@ -49,7 +49,7 @@ const Checkout = () => {
   const handleCartListView = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-cart", {
+      const response = await axios.get("http://54.86.160.111:8000/view-cart", {
         headers: {
           Authorization: token,
         },
@@ -67,7 +67,7 @@ const Checkout = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-billing-address",
+        "http://54.86.160.111:8000/view-billing-address",
         {
           headers: {
             Authorization: token,
@@ -88,7 +88,7 @@ const Checkout = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-shipping-address",
+        "http://54.86.160.111:8000/view-shipping-address",
         {
           headers: {
             Authorization: token,
@@ -112,7 +112,7 @@ const Checkout = () => {
       // const decodedUser= decode(token).payload.user._id;
 
       const response = await axios.post(
-        "http://localhost:8000/add-billing-address",
+        "http://54.86.160.111:8000/add-billing-address",
         BillingAddressDetails,
         {
           headers: {
@@ -152,7 +152,7 @@ const Checkout = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.post(
-        "http://localhost:8000/add-shipping-address",
+        "http://54.86.160.111:8000/add-shipping-address",
         ShippingAddressDetails,
         {
           headers: {
@@ -216,7 +216,7 @@ const Checkout = () => {
     try {
       const token = Cookies.get('token');
       const stripe = await loadStripe('pk_test_51NiiOgSAsO3Y0PmoXLtoCmw8jcEGuCd8XRFykRDonK0TLaRfEHObkFfenaBGl8TjnDGDnJoOctFSHVvmCJueZQKB001KX6rK3N');
-      const response = await axios.post('http://localhost:8000/payment', { items: cartList }, {
+      const response = await axios.post('http://54.86.160.111:8000/payment', { items: cartList }, {
         headers: {
           Authorization: token
         }
@@ -736,7 +736,7 @@ const Checkout = () => {
                 <div className="col-2">
                   <div className="w-auto product-image rounded-3">
                     <img
-                      src={`http://localhost:8000/uploads/${item.productId.productImage}`}
+                      src={`http://54.86.160.111:8000/uploads/${item.productId.productImage}`}
                       alt=""
                       className="rounded-3 border border-1"
                     />

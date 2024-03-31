@@ -12,7 +12,7 @@ const Category = () => {
   const handleViewCategoryList = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:8000/view-category", {
+      const response = await axios.get("http://54.86.160.111:8000/view-category", {
         headers: {
           Authorization: token,
         },
@@ -39,7 +39,7 @@ const Category = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.post(
-        "http://localhost:8000/add-category",
+        "http://54.86.160.111:8000/add-category",
         { categoryName },
         {
           headers: {

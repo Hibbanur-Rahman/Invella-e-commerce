@@ -11,7 +11,7 @@ const Address = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-billing-address",
+        "http://54.86.160.111:8000/view-billing-address",
         {
           headers: {
             Authorization: token,
@@ -32,7 +32,7 @@ const Address = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-shipping-address",
+        "http://54.86.160.111:8000/view-shipping-address",
         {
           headers: {
             Authorization: token,
@@ -155,7 +155,7 @@ const BillingAddress = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
-        "http://localhost:8000/view-billing-address",
+        "http://54.86.160.111:8000/view-billing-address",
         {
           headers: {
             Authorization: token,
@@ -178,7 +178,7 @@ const BillingAddress = () => {
       // const decodedUser= decode(token).payload.user._id;
 
       const response = await axios.post(
-        "http://localhost:8000/add-billing-address",
+        "http://54.86.160.111:8000/add-billing-address",
         BillingAddressDetails,
         {
           headers: {
@@ -412,7 +412,7 @@ const ShippingAddress = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios.post(
-        "http://localhost:8000/add-shipping-address",
+        "http://54.86.160.111:8000/add-shipping-address",
         ShippingAddressDetails,
         {
           headers: {
